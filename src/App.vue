@@ -1,37 +1,18 @@
-<script setup lang="ts"></script>
-
 <template>
-    <main>
-        <h1>HelloWorld</h1>
-    </main>
+    <div class="app">
+        <!-- router-view 用于占位 -->
+        <router-view></router-view>
+    </div>
 </template>
 
+<script setup lang="ts"></script>
 
 <style scoped>
-header {
-    line-height: 1.5;
-}
-
-.logo {
-    display: block;
-    margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-    header {
-        display: flex;
-        place-items: center;
-        padding-right: calc(var(--section-gap) / 2);
-    }
-
-    .logo {
-        margin: 0 2rem 0 0;
-    }
-
-    header .wrapper {
-        display: flex;
-        place-items: flex-start;
-        flex-wrap: wrap;
-    }
+.app {
+    /* background-color: skyblue; */
+    /* vw和vh是视口单位，视口就是屏幕大小 */
+    width: 100vw;
+    height: 100vh;
+    background-color: #f9fafb;
 }
 </style>

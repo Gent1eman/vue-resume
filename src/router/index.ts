@@ -5,7 +5,37 @@ const routes: Array<RouteRecordRaw> = [
         path: "/",
         name: "home",
         component: () => import("@/views/home/index.vue"),
-        meta: { title: "简历工坊 - 首页" }
+        meta: { title: "简历工坊" }
+    },
+    {
+        path: "/resume",
+        component: () => import("@/views/layout/index.vue"),
+        children: [
+            {
+                path: "/resume/edit",
+                name: "edit",
+                component: () => import("@/views/resumeEdit/index.vue"),
+                meta: { title: "简历工坊 - 编辑" }
+            },
+            {
+                path: "/resume/template",
+                name: "template",
+                component: () => import("@/views/resumeTemplate/index.vue"),
+                meta: { title: "简历工坊 - 模板" }
+            },
+            {
+                path: "/resume/aiDeep",
+                name: "aiDeep",
+                component: () => import("@/views/aiDeep/index.vue"),
+                meta: { title: "简历工坊 - AI深度交流" }
+            },
+            {
+                path: "/resume/setting",
+                name: "setting",
+                component: () => import("@/views/setting/index.vue"),
+                meta: { title: "简历工坊 - 网站配置" }
+            }
+        ]
     }
 ];
 

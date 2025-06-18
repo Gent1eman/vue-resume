@@ -29,7 +29,8 @@ export default defineConfigWithVueTs(
             "@typescript-eslint/no-unused-vars": "off",
             "@typescript-eslint/no-var-requires": "off",
             "no-unused-vars": "off",
-            "@typescript-eslint/no-explicit-any": "off"
+            "@typescript-eslint/no-explicit-any": "off",
+            "vue/multi-word-component-names": "off" // 完全关闭规则
         }
     }
 );
