@@ -17,11 +17,9 @@ import leftPanel from "./c-cpns/leftPanel/index.vue";
 import rightPanel from "./c-cpns/rightPanel/index.vue";
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .content-wrapper {
     display: flex;
-    height: 100%;
-    width: 100%;
     gap: 10px; /* 替代margin-left */
     box-sizing: border-box;
     overflow: hidden; /* 禁止外层滚动 */

@@ -2,11 +2,10 @@
     <div class="left-panel">
         <a-card
             title="简历编辑器"
-            class="card-wrapper"
             :tab-list="tabList"
             :active-tab-key="key"
             @tabChange="(key: any) => onTabChange(key, 'key')"
-            :bodyStyle="{ height: '86%' }"
+            :bodyStyle="{ height: 'calc(100vh - 230px)', overflow: 'auto' }"
         >
             <template #extra><a-button type="text" :icon="h(EditOutlined)" @click="showDrawer">自定义简历配置</a-button></template>
             <component :is="contentList[key]" />
@@ -89,13 +88,9 @@ const onTabChange = (value: string, type: string) => {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .left-panel {
     height: 100%;
-
-    .card-wrapper {
-        height: 95%;
-    }
 
     /* 修改功能栏的布局 */
     .custom-actions {

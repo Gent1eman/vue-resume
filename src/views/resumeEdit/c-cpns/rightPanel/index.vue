@@ -1,6 +1,6 @@
 <template>
     <div class="right-panel">
-        <a-card title="简历预览" class="card-wrapper" :bodyStyle="{ height: '87%' }">
+        <a-card title="简历预览" :bodyStyle="{ height: 'calc(100vh - 185px)', overflow: 'auto' }">
             <p class="test">card content</p>
             <p class="test">card content</p>
             <p class="test">card content</p>
@@ -19,14 +19,8 @@ import { h } from "vue";
 import { ExportOutlined } from "@ant-design/icons-vue";
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .right-panel {
-    height: 100%;
-
-    .card-wrapper {
-        height: 100%;
-    }
-
     /* 修改功能栏的布局 */
     .custom-actions {
         display: flex;

@@ -14,7 +14,7 @@
 import Header from "@/components/Header/index.vue";
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .layout {
     height: 100vh;
     display: flex;
