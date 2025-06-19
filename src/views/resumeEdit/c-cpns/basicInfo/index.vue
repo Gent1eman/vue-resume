@@ -59,7 +59,7 @@
                             </a-form-item>
                         </a-col>
                         <a-col :span="12">
-                            <a-form-item label="性别" required>
+                            <a-form-item label="性别">
                                 <a-select placeholder="请选择">
                                     <a-select-option value="man">男</a-select-option>
                                     <a-select-option value="woman">女</a-select-option>
@@ -69,7 +69,7 @@
                     </a-row>
                     <a-row :gutter="[24, 64]">
                         <a-col :span="12">
-                            <a-form-item label="年龄" required>
+                            <a-form-item label="年龄">
                                 <a-input-number placeholder="请输入您的年龄" style="width: 100%" :min="0" :max="120">
                                     <!-- 插槽 -->
                                     <template #prefix>
@@ -79,7 +79,7 @@
                             </a-form-item>
                         </a-col>
                         <a-col :span="12">
-                            <a-form-item label="个人博客" required>
+                            <a-form-item label="个人博客">
                                 <a-input placeholder="例如：https://yourblog.com">
                                     <!-- 插槽 -->
                                     <template #prefix>
@@ -91,7 +91,7 @@
                     </a-row>
                     <a-row :gutter="[24, 64]">
                         <a-col :span="12">
-                            <a-form-item label="Github" required>
+                            <a-form-item label="Github">
                                 <a-input placeholder="例如：https://github.com/yourname">
                                     <!-- 插槽 -->
                                     <template #prefix>
@@ -101,7 +101,7 @@
                             </a-form-item>
                         </a-col>
                         <a-col :span="12">
-                            <a-form-item label="求职意向" required>
+                            <a-form-item label="求职意向">
                                 <a-input placeholder="例如：前端工程师">
                                     <!-- 插槽 -->
                                     <template #prefix>
@@ -113,7 +113,7 @@
                     </a-row>
                     <a-row :gutter="[24, 64]">
                         <a-col :span="12">
-                            <a-form-item label="政治面貌" required>
+                            <a-form-item label="政治面貌">
                                 <a-select placeholder="请选择">
                                     <a-select-option value="partyMember">中共党员</a-select-option>
                                     <a-select-option value="probationaryPartyMember">中共预备党员</a-select-option>
