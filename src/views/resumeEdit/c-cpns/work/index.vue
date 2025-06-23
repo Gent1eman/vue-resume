@@ -9,11 +9,25 @@
             <p class="hint-text">请填写您的工作经历，包括公司、职位和工作职责，按时间倒序排序</p>
         </div>
         <a-divider />
+        <div class="content">
+            <a-space direction="vertical" :size="16" style="width: 100%">
+                <work-info v-for="(j, index) of count" :key="index" />
+            </a-space>
+            <a-button type="dashed" :icon="h(PlusOutlined)" class="btn" @click="handleClick">添加工作经历</a-button>
+        </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { RiseOutlined } from "@ant-design/icons-vue";
+import { RiseOutlined, PlusOutlined } from "@ant-design/icons-vue";
+import { h, ref } from "vue";
+import WorkInfo from "@/components/workInfo/index.vue";
+
+const count = ref(1);
+
+const handleClick = () => {
+    count.value += 1;
+};
 </script>
 
 <style scoped lang="scss">
@@ -33,6 +47,11 @@ import { RiseOutlined } from "@ant-design/icons-vue";
     .hint-text {
         margin-top: 10px;
         color: #757575;
+    }
+
+    .btn {
+        margin-top: 20px;
+        width: 100%;
     }
 }
 </style>

@@ -9,11 +9,22 @@
             <p class="hint-text">请详细描述您的科研成果，包括发表的论文、专利、研究报告等，支持 Markdown 格式</p>
         </div>
         <a-divider />
+        <div class="content">
+            <!-- <markdown-editor /> -->
+            <EditorPreview :editorDefaultContent :previewTitle />
+        </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { ExperimentOutlined } from "@ant-design/icons-vue";
+import EditorPreview from "@/components/editor-preview/index.vue";
+
+const editorDefaultContent = {
+    title: "编辑科研成果",
+    placeholder: "* 发表**XXX**论文"
+};
+const previewTitle:string = "科研成果预览";
 </script>
 
 <style scoped lang="scss">

@@ -11,7 +11,7 @@
                             <a-input placeholder="例如：北京大学">
                                 <!-- 插槽 -->
                                 <template #prefix>
-                                    <user-outlined :style="{ color: '#9CA3AF', fontSize: '16px' }" />
+                                    <bank-outlined :style="{ color: '#9CA3AF', fontSize: '16px' }" />
                                 </template>
                             </a-input>
                         </a-form-item>
@@ -21,7 +21,7 @@
                             <a-input placeholder="例如：计算机科学与技术">
                                 <!-- 插槽 -->
                                 <template #prefix>
-                                    <phone-outlined :style="{ color: '#9CA3AF', fontSize: '16px' }" />
+                                    <book-outlined :style="{ color: '#9CA3AF', fontSize: '16px' }" />
                                 </template>
                             </a-input>
                         </a-form-item>
@@ -30,7 +30,7 @@
                 <a-row :gutter="[24, 64]">
                     <a-col :span="12">
                         <a-form-item label="学位" required>
-                            <a-select placeholder="请选择">
+                            <a-select placeholder="请选择学位">
                                 <a-select-option value="associate">专科</a-select-option>
                                 <a-select-option value="bachelor">本科</a-select-option>
                                 <a-select-option value="master">硕士</a-select-option>
@@ -43,7 +43,7 @@
                             <a-input placeholder="例如：3.8/4.0">
                                 <!-- 插槽 -->
                                 <template #prefix>
-                                    <user-outlined :style="{ color: '#9CA3AF', fontSize: '16px' }" />
+                                    <trophy-outlined :style="{ color: '#9CA3AF', fontSize: '16px' }" />
                                 </template>
                             </a-input>
                         </a-form-item>
@@ -65,7 +65,7 @@
 
 <script lang="ts" setup>
 import { h } from "vue";
-import { DeleteOutlined } from "@ant-design/icons-vue";
+import { DeleteOutlined, BookOutlined, TrophyOutlined, BankOutlined } from "@ant-design/icons-vue";
 import zhCN from "ant-design-vue/es/locale/zh_CN";
 </script>
 

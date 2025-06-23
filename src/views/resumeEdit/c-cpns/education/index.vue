@@ -21,9 +21,9 @@
 
 <script lang="ts" setup>
 import { h, ref } from "vue";
-import { PlusOutlined } from "@ant-design/icons-vue";
-import { BookOutlined } from "@ant-design/icons-vue";
-import EduInfo from "./c-cpns/edu-info/index.vue";
+import { PlusOutlined, BookOutlined } from "@ant-design/icons-vue";
+
+import EduInfo from "@/components/eduInfo/index.vue";
 
 const count = ref(1);
 

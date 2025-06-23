@@ -9,11 +9,23 @@
             <p class="hint-text">请填写您的证书信息，包括证书名称、获得时间和证书级别，支持Markdown格式</p>
         </div>
         <a-divider />
+        <div class="content">
+            <!-- <markdown-editor /> -->
+            <EditorPreview :editorDefaultContent :previewTitle />
+        </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { SafetyCertificateOutlined } from "@ant-design/icons-vue";
+import EditorPreview from "@/components/editor-preview/index.vue";
+
+const editorDefaultContent = {
+    title: "编辑证书信息",
+    placeholder: "* 获得**XXX**证书"
+};
+
+const previewTitle: string = "证书信息预览";
 </script>
 
 <style scoped lang="scss">
