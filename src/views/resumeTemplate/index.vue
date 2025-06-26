@@ -1,13 +1,13 @@
 <template>
-    <div class="template">
-        <h2>template</h2>
+    <div class="resume-template">
+        <h2>resume-template</h2>
     </div>
 </template>
 
 <script lang="ts" setup></script>
 
 <style scoped>
-.template {
+.resume-template {
     color: red;
 }
 </style>

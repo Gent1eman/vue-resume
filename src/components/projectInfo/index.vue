@@ -1,6 +1,6 @@
 <template>
     <div class="project-info">
-        <a-card title="项目经历#1">
+        <a-card :title="`项目经历#${idx}`">
             <template #extra>
                 <a-button type="text" :icon="h(DeleteOutlined)" danger />
             </template>
@@ -54,6 +54,8 @@ import { h } from "vue";
 import { DeleteOutlined, AppstoreOutlined, TeamOutlined } from "@ant-design/icons-vue";
 import zhCN from "ant-design-vue/es/locale/zh_CN";
 import MarkdownEditor from "@/components/markdown-editor/index.vue";
+
+defineProps<{ idx: number }>();
 
 // 编辑器的默认值
 const editorDefaultContent = {

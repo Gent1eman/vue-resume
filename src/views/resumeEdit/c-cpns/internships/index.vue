@@ -11,7 +11,7 @@
         <a-divider />
         <div class="content">
             <a-space direction="vertical" :size="16" style="width: 100%">
-                <intern-info v-for="(j, index) of count" :key="index" />
+                <intern-info v-for="(j, index) of count" :key="index" :idx="j" />
             </a-space>
             <a-button type="dashed" :icon="h(PlusOutlined)" class="btn" @click="handleClick">添加实习经历</a-button>
         </div>

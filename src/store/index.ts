@@ -1,5 +1,2 @@
-import { createPinia } from "pinia";
-
-const pinia = createPinia();
-
-export default pinia;
+// // 统一导出所有 Store 模块
+// export { useResumeStore } from "./useResumeStore";

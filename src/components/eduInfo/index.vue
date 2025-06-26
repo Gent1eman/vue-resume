@@ -1,6 +1,6 @@
 <template>
     <div class="edu-info">
-        <a-card title="教育经历#1">
+        <a-card :title="`教育经历#${idx}`">
             <template #extra>
                 <a-button type="text" :icon="h(DeleteOutlined)" danger />
             </template>
@@ -58,6 +58,14 @@
                         </a-form-item>
                     </a-col>
                 </a-row>
+
+                <a-row :gutter="[24, 64]">
+                    <a-col :span="24">
+                        <a-form-item label="补充信息" required>
+                            <markdown-editor :isDisplayTitle="false" style="margin-top: 0px" :editorDefaultContent />
+                        </a-form-item>
+                    </a-col>
+                </a-row>
             </a-form>
         </a-card>
     </div>
@@ -66,7 +74,15 @@
 <script lang="ts" setup>
 import { h } from "vue";
 import { DeleteOutlined, BookOutlined, TrophyOutlined, BankOutlined } from "@ant-design/icons-vue";
+import MarkdownEditor from "@/components/markdown-editor/index.vue";
 import zhCN from "ant-design-vue/es/locale/zh_CN";
+
+defineProps<{ idx: number }>();
+
+// 编辑器的默认值
+const editorDefaultContent = {
+    placeholder: `- **专业课程**：计算机视觉、工程伦理等。 **图像认知重庆重点实验室** **研究方向**：工业瑕疵检测（Computer Vision）`
+};
 </script>
 
 <style scoped>

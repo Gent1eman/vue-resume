@@ -19,7 +19,7 @@
 <script lang="ts" setup>
 import { StarOutlined } from "@ant-design/icons-vue";
 
-defineProps<{
+const props = defineProps<{
     content?: string; // 接收父组件传入的HTML内容
     previewTitle?: string;
 }>();
@@ -42,6 +42,12 @@ defineProps<{
 }
 
 :deep(.preview-content) ul {
+    margin: 0;
+    padding: 4px;
+    list-style-position: inside;
+}
+
+:deep(.preview-content) ol {
     margin: 0;
     padding: 4px;
     list-style-position: inside;

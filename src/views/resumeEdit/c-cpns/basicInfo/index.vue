@@ -37,7 +37,7 @@
                             </a-form-item>
                         </a-col>
                         <a-col :span="12">
-                            <a-form-item label="姓名" required>
+                            <a-form-item label="电话" required>
                                 <a-input placeholder="请输入您的电话号码">
                                     <!-- 插槽 -->
                                     <template #prefix>

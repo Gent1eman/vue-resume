@@ -44,6 +44,8 @@ const emit = defineEmits(["update:modelValue", "htmlChanged"]);
 
 // 处理HTML变化
 const emitHtmlChange = (html: string) => {
+    console.log("%c [ editor:text ]-48", "font-size:13px; background:pink; color:#bf2c9f;", text);
+    console.log("%c [ editor:html ]-48", "font-size:13px; background:pink; color:#bf2c9f;", html);
     emit("htmlChanged", html);
 };
 
