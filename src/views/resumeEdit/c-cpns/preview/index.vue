@@ -57,16 +57,17 @@ import EducationPreview from "@/components/educationPreview/index.vue";
 import WorkPreview from "@/components/workPreview/index.vue";
 import InternshipPreview from "@/components/internshipPreview/index.vue";
 import ProjectPreview from "@/components/projectPreview/index.vue";
-import { useResumeStore } from "@/store/useResumeStore";
-import { computed, ref } from "vue";
+import { useResumeStore, useSettingStore } from "@/store";
+import { computed } from "vue";
 const resumeStore = useResumeStore();
+const settingStore = useSettingStore();
 const basicInfo = computed(() => resumeStore.basicInfo);
 
 const resumeStyle = computed(() => {
     return {
-        "--color-theme": "#1677ff",
-        "--line-height": "2",
-        "--module-space": "10px"
+        "--color-theme": settingStore.themeColor,
+        "--line-height": settingStore.lineHeight,
+        "--module-space": `${settingStore.moduleSpace}px`
     };
 });
 </script>

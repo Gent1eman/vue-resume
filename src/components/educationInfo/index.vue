@@ -86,7 +86,7 @@ import zhCN from "ant-design-vue/es/locale/zh_CN";
 import { degreeOptions } from "@/utils/data-options";
 import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
-import { useResumeStore } from "@/store/useResumeStore";
+import { useResumeStore } from "@/store";
 // 编辑器的默认值
 const editorDefaultContent = {
     placeholder: `- **专业课程**：计算机视觉、工程伦理等。 **图像认知重庆重点实验室** **研究方向**：工业瑕疵检测（Computer Vision）`

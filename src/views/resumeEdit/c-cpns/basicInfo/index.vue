@@ -22,7 +22,6 @@
                     <a-button danger :icon="h(CloseCircleOutlined)">移除头像</a-button>
                 </a-space>
             </div>
-            <div>{{ resumeStore.basicInfo }}</div>
             <div class="form-data">
                 <a-form layout="vertical" v-model:value="basicInfo">
                     <a-row :gutter="[24, 64]">
@@ -135,7 +134,7 @@ import {
     PhoneOutlined,
     IeOutlined
 } from "@ant-design/icons-vue";
-import { useResumeStore } from "@/store/useResumeStore";
+import { useResumeStore } from "@/store";
 
 // 获取store示例
 const resumeStore = useResumeStore();

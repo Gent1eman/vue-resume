@@ -22,7 +22,7 @@
 import { RiseOutlined, PlusOutlined } from "@ant-design/icons-vue";
 import { computed, h, ref } from "vue";
 import WorkInfo from "@/components/workInfo/index.vue";
-import { useResumeStore } from "@/store/useResumeStore";
+import { useResumeStore } from "@/store";
 
 const resumeStore = useResumeStore();
 const works = computed(() => resumeStore.workExperience);

@@ -65,7 +65,7 @@ import { computed, h } from "vue";
 import { DeleteOutlined, AppstoreOutlined, TeamOutlined } from "@ant-design/icons-vue";
 import zhCN from "ant-design-vue/es/locale/zh_CN";
 import MarkdownEditor from "@/components/markdown-editor/index.vue";
-import { useResumeStore } from "@/store/useResumeStore";
+import { useResumeStore } from "@/store";
 import dayjs, { Dayjs } from "dayjs";
 
 // 编辑器的默认值

@@ -92,7 +92,7 @@ import { DeleteOutlined, BankOutlined, TeamOutlined, EnvironmentOutlined } from 
 import zhCN from "ant-design-vue/es/locale/zh_CN";
 import MarkdownEditor from "@/components/markdown-editor/index.vue";
 import { workTypeOptions } from "@/utils/data-options";
-import { useResumeStore } from "@/store/useResumeStore";
+import { useResumeStore } from "@/store";
 import dayjs, { Dayjs } from "dayjs";
 
 // 编辑器的默认值

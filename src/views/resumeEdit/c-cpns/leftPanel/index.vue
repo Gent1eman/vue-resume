@@ -7,11 +7,13 @@
             @tabChange="(key: any) => onTabChange(key, 'key')"
             :bodyStyle="{ height: 'calc(100vh - 230px)', overflow: 'auto' }"
         >
-            <template #extra><a-button type="text" :icon="h(EditOutlined)" @click="showDrawer">自定义简历配置</a-button></template>
+            <template #extra>
+                <a-button type="text" :icon="h(EditOutlined)" @click="showDrawer">自定义简历配置</a-button>
+            </template>
             <component :is="contentList[key]" />
             <template #actions>
                 <div class="custom-actions">
-                    <a-button type="primary" :icon="h(CloudUploadOutlined)" @click="handleAutoFill">保存</a-button>
+                    <a-button type="primary" :icon="h(ReloadOutlined)" @click="handleAutoFill">初始化数据</a-button>
                 </div>
             </template>
         </a-card>
@@ -38,7 +40,6 @@
         <div class="setting">
             <p class="setting-title">样式配置</p>
             <a-divider style="margin-top: 12px" />
-
             <div class="setting-item">
                 <a-space direction="vertical">
                     <p>
@@ -55,7 +56,7 @@
                     </p>
                     <input
                         type="color"
-                        :value="data.colorPrimary"
+                        v-model="settingStore.themeColor"
                         style="width: 32px; height: 32px; cursor: pointer; border: 1px solid #d3d3d3; border-radius: 5px; padding: 1px"
                     />
                 </a-space>
@@ -74,7 +75,7 @@
                             </a-tooltip>
                         </a-space>
                     </p>
-                    <a-input-number id="inputNumber" :min="1" :max="10" />
+                    <a-input-number id="inputNumber" :min="1" v-model:value="settingStore.moduleSpace" />
                 </a-space>
             </div>
             <div class="setting-item">
@@ -91,7 +92,7 @@
                             </a-tooltip>
                         </a-space>
                     </p>
-                    <a-input-number id="inputNumber" :min="1" :max="10" />
+                    <a-input-number id="inputNumber" :min="0" :step="0.1" v-model:value="settingStore.lineHeight" />
                 </a-space>
             </div>
             <a-divider style="margin-top: 12px; margin-bottom: 8px" />
@@ -126,9 +127,9 @@
 </template>
 
 <script lang="ts" setup>
-import { h, onMounted, ref, watch } from "vue";
+import { h, ref, watch } from "vue";
 import {
-    CloudUploadOutlined,
+    ReloadOutlined,
     EditOutlined,
     BlockOutlined,
     QuestionCircleOutlined,
@@ -148,14 +149,15 @@ import Research from "../research/index.vue";
 import Campus from "../campus/index.vue";
 import Certificates from "../certificates/index.vue";
 import type { Component } from "vue";
-import { useResumeStore } from "@/store/useResumeStore";
+import { useResumeStore, useSettingStore } from "@/store";
 import { message } from "ant-design-vue";
 import { VueDraggable } from "vue-draggable-plus";
 import { moduleArray } from "@/utils/module-sort";
 import ModuleCard from "@/components/moduleCard/index.vue";
 const open = ref<boolean>(false);
 const moduleList = ref(moduleArray);
-
+const resumeStore = useResumeStore();
+const settingStore = useSettingStore();
 const showDrawer = () => {
     open.value = true;
 };
@@ -163,10 +165,6 @@ const showDrawer = () => {
 const onClose = () => {
     open.value = false;
 };
-const defaultData = {
-    colorPrimary: "#1677ff"
-};
-const data = ref(defaultData);
 
 const key = ref("basicInfo");
 const tabList = [
@@ -202,8 +200,6 @@ const onTabChange = (value: string, type: string) => {
         key.value = value;
     }
 };
-
-const resumeStore = useResumeStore();
 
 watch(
     () => resumeStore.$state,

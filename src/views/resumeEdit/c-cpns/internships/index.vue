@@ -21,7 +21,7 @@
 <script lang="ts" setup>
 import { SolutionOutlined, PlusOutlined } from "@ant-design/icons-vue";
 import InternshipInfo from "@/components/internshipInfo/index.vue";
-import { useResumeStore } from "@/store/useResumeStore";
+import { useResumeStore } from "@/store";
 import { ref, h, computed } from "vue";
 
 const resumeStore = useResumeStore();

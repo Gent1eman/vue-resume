@@ -23,7 +23,7 @@
 import { computed, h, ref, watch } from "vue";
 import { PlusOutlined, BookOutlined } from "@ant-design/icons-vue";
 import EducationInfo from "@/components/educationInfo/index.vue";
-import { useResumeStore } from "@/store/useResumeStore";
+import { useResumeStore } from "@/store";
 
 // 获取store实例
 const resumeStore = useResumeStore();

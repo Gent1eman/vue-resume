@@ -26,7 +26,7 @@ import { CodeOutlined } from "@ant-design/icons-vue";
 import MarkdownEditor from "@/components/markdown-editor/index.vue";
 import MarkdownPreview from "@/components/markdown-preview/index.vue";
 import { computed, ref } from "vue";
-import { useResumeStore } from "@/store/useResumeStore";
+import { useResumeStore } from "@/store";
 
 const editorDefaultContent = {
     title: "编辑专业技能",

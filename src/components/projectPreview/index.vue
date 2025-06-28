@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useResumeStore } from "@/store/useResumeStore";
+import { useResumeStore } from "@/store";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
 const resumeStore = useResumeStore();
