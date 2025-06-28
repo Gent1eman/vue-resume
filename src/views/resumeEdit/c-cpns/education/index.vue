@@ -12,7 +12,7 @@
 
         <div class="content">
             <a-space direction="vertical" :size="16" style="width: 100%">
-                <edu-info v-for="(j, index) of count" :key="index" :idx="j"/>
+                <education-info v-for="(edu, index) of educations" :key="edu.id" :id="edu.id" :idx="index + 1" />
             </a-space>
             <a-button type="dashed" :icon="h(PlusOutlined)" class="btn" @click="handleClick">添加教育经历</a-button>
         </div>
@@ -20,15 +20,32 @@
 </template>
 
 <script lang="ts" setup>
-import { h, ref } from "vue";
+import { computed, h, ref, watch } from "vue";
 import { PlusOutlined, BookOutlined } from "@ant-design/icons-vue";
+import EducationInfo from "@/components/educationInfo/index.vue";
+import { useResumeStore } from "@/store/useResumeStore";
 
-import EduInfo from "@/components/eduInfo/index.vue";
+// 获取store实例
+const resumeStore = useResumeStore();
+const educations = computed(() => resumeStore.education);
 
+// 父组件中已存在的监听
+// watch(
+//     () => resumeStore.$state,
+//     () => {
+//         resumeStore.saveToLocalStorage(); // 自动触发保存
+//     },
+//     { deep: true }
+// );
 const count = ref(1);
 
 const handleClick = () => {
     count.value += 1;
+};
+
+// 删除教育经历
+const handleDeleteEducation = (id: number) => {
+    resumeStore.deleteEducation(id);
 };
 </script>
 

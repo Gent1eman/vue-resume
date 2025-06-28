@@ -5,13 +5,18 @@
         <div class="preview-content" v-for="item in datas" :key="item.id">
             <div class="project-info">
                 <div class="left">
-                    <a-space>
-                        <span>{{ item.projectName }}</span>
-                        <span>{{ item.role }}</span>
-                    </a-space>
+                    <strong>
+                        <span class="text-space" v-show="item.projectName">{{ item.projectName }}</span>
+                    </strong>
+                    <strong>
+                        <!-- 最后一个不需要右边距 -->
+                        <span v-show="item.role">{{ item.role }}</span>
+                    </strong>
                 </div>
                 <div class="right">
-                    <span>{{ item.startDate }} - {{ item.endDate }}</span>
+                    <strong>
+                        <span>{{ item.startDate }} - {{ item.endDate }}</span>
+                    </strong>
                 </div>
             </div>
             <div class="project-description" v-html="renderMarkdown(item.description)"></div>
@@ -47,6 +52,15 @@ const renderMarkdown = (text: string) => DOMPurify.sanitize(marked.parse(text) a
     .project-info {
         display: flex;
         justify-content: space-between;
+
+        .text-space {
+            font-size: 15px;
+            margin-right: 20px;
+        }
+
+        .right {
+            font-size: 15px;
+        }
     }
 
     :deep(.project-description) {

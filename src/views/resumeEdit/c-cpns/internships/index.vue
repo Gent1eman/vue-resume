@@ -11,7 +11,7 @@
         <a-divider />
         <div class="content">
             <a-space direction="vertical" :size="16" style="width: 100%">
-                <intern-info v-for="(j, index) of count" :key="index" :idx="j" />
+                <internship-info v-for="(internship, index) of internships" :key="internship.id" :idx="index + 1" :id="internship.id" />
             </a-space>
             <a-button type="dashed" :icon="h(PlusOutlined)" class="btn" @click="handleClick">添加实习经历</a-button>
         </div>
@@ -20,8 +20,13 @@
 
 <script lang="ts" setup>
 import { SolutionOutlined, PlusOutlined } from "@ant-design/icons-vue";
-import InternInfo from "@/components/internInfo/index.vue";
-import { ref, h } from "vue";
+import InternshipInfo from "@/components/internshipInfo/index.vue";
+import { useResumeStore } from "@/store/useResumeStore";
+import { ref, h, computed } from "vue";
+
+const resumeStore = useResumeStore();
+const internships = computed(() => resumeStore.internships);
+
 const count = ref(1);
 
 const handleClick = () => {

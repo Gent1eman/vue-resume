@@ -10,15 +10,23 @@
         </div>
         <a-divider />
         <div class="content">
-            <!-- <markdown-editor /> -->
-            <EditorPreview :editorDefaultContent :previewTitle />
+            <markdown-preview :content="htmlContent" :previewTitle />
+            <markdown-editor
+                @htmlChanged="handleHtmlChanged"
+                :editorDefaultContent
+                :content="localSelfEval"
+                @update:content="(val: string) => (localSelfEval = val)"
+            />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { ProfileOutlined } from "@ant-design/icons-vue";
-import EditorPreview from "@/components/editor-preview/index.vue";
+import { useResumeStore } from "@/store/useResumeStore";
+import MarkdownEditor from "@/components/markdown-editor/index.vue";
+import MarkdownPreview from "@/components/markdown-preview/index.vue";
+import { computed, ref } from "vue";
 
 const editorDefaultContent = {
     title: "编辑个人评价",
@@ -26,7 +34,16 @@ const editorDefaultContent = {
 * 对目前的工作有极大的兴趣
     `
 };
-const previewTitle:string = "个人评价预览";
+const previewTitle: string = "个人评价预览";
+
+const htmlContent = ref("");
+
+const resumeStore = useResumeStore();
+const localSelfEval = computed({ get: () => resumeStore.selfEval, set: val => resumeStore.updateSelftEval(val) });
+
+const handleHtmlChanged = (html: string) => {
+    htmlContent.value = html;
+};
 </script>
 
 <style scoped lang="scss">

@@ -2,7 +2,7 @@
     <div class="module-card">
         <div class="left">
             <a-space>
-                <MenuOutlined />
+                <MenuOutlined style="color: #9CA3AF" />
                 <component :is="icon" class="text-blue" />
                 <span>{{ title }}</span>
             </a-space>
@@ -41,6 +41,8 @@ const checked = ref(true);
     padding: 12px;
     border-radius: 6px;
     margin-bottom: 4px;
+    cursor: pointer;
+    border: 1px solid #e7e9ec;
 
     .text-blue {
         color: #1677ff;

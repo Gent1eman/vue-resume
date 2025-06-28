@@ -10,14 +10,23 @@
         </div>
         <a-divider />
         <div class="content">
-            <EditorPreview :editorDefaultContent :previewTitle />
+            <markdown-preview :content="htmlContent" :previewTitle />
+            <markdown-editor
+                @htmlChanged="handleHtmlChanged"
+                :editorDefaultContent
+                :content="localSkills"
+                @update:content="(val: string) => (localSkills = val)"
+            />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { CodeOutlined } from "@ant-design/icons-vue";
-import EditorPreview from "@/components/editor-preview/index.vue";
+import MarkdownEditor from "@/components/markdown-editor/index.vue";
+import MarkdownPreview from "@/components/markdown-preview/index.vue";
+import { computed, ref } from "vue";
+import { useResumeStore } from "@/store/useResumeStore";
 
 const editorDefaultContent = {
     title: "编辑专业技能",
@@ -27,6 +36,14 @@ const editorDefaultContent = {
 * 熟悉计算机网络`
 };
 const previewTitle: string = "专业技能预览";
+const htmlContent = ref("");
+
+const resumeStore = useResumeStore();
+const localSkills = computed({ get: () => resumeStore.skills, set: val => resumeStore.updateSkill(val) });
+
+const handleHtmlChanged = (html: string) => {
+    htmlContent.value = html;
+};
 </script>
 
 <style scoped lang="scss">

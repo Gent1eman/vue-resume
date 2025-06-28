@@ -5,16 +5,31 @@
         <div class="preview-content" v-for="item in datas" :key="item.id">
             <div class="work-info">
                 <div class="left">
-                    <a-space>
-                        <span>{{ item.company }}</span>
-                        <span>{{ item.position }}</span>
-                        <span>（{{ item.department }} ）</span>
-                        <span>{{ item.plcae }}</span>
-                        <span>{{ item.workType }}</span>
-                    </a-space>
+                    <strong>
+                        <span class="text-space" v-show="item.company">{{ item.company }}</span>
+                    </strong>
+
+                    <strong>
+                        <span class="text-space" v-show="item.position">{{ item.position }}</span>
+                    </strong>
+
+                    <strong>
+                        <span class="text-space" v-show="item.department">{{ item.department }} </span>
+                    </strong>
+
+                    <strong>
+                        <span class="text-space" v-show="item.place">{{ item.place }}</span>
+                    </strong>
+
+                    <strong>
+                        <!-- 最后一个不用加右边距 -->
+                        <span class="text-space" v-show="item.workType">{{ item.workType }}</span>
+                    </strong>
                 </div>
                 <div class="right">
-                    <span>{{ item.startDate }} - {{ item.endDate }}</span>
+                    <strong>
+                        <span>{{ item.startDate }} - {{ item.endDate }}</span>
+                    </strong>
                 </div>
             </div>
             <div class="work-description" v-html="renderMarkdown(item.description)"></div>
@@ -50,6 +65,15 @@ const renderMarkdown = (text: string) => DOMPurify.sanitize(marked.parse(text) a
     .work-info {
         display: flex;
         justify-content: space-between;
+
+        .text-space {
+            font-size: 15px;
+            margin-right: 20px;
+        }
+
+        .right {
+            font-size: 15px;
+        }
     }
 
     :deep(.work-description) {

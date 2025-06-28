@@ -82,7 +82,6 @@ export const useResumeStore = defineStore("resume", {
          * 保存到 localStorage
          */
         saveToLocalStorage() {
-            console.log("%c [ this.$state ]-70", "font-size:13px; background:pink; color:#bf2c9f;", this.$state);
             // $state 就是存储在 store 中的所有数据
             localStorage.setItem("resumeData", JSON.stringify(this.$state));
             localStorage.setItem("currentId", JSON.stringify(this.currentId));
@@ -256,7 +255,6 @@ export const useResumeStore = defineStore("resume", {
         loadFromLocalStorage() {
             const stored = localStorage.getItem("resumeStore");
             if (stored) {
-                console.log("%c [ this.$state ]-257", "font-size:13px; background:pink; color:#bf2c9f;", this.$state);
                 this.$state = JSON.parse(stored);
             }
         },

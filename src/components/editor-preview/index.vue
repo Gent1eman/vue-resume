@@ -8,7 +8,6 @@ import { ref } from "vue";
 import MarkdownEditor from "../markdown-editor/index.vue";
 import MarkdownPreview from "../markdown-preview/index.vue";
 
-
 const props = withDefaults(
     defineProps<{
         editorDefaultContent?: { [key: string]: string };

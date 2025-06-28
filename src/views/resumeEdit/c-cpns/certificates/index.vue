@@ -2,7 +2,7 @@
     <div class="certificates">
         <div>
             <div class="title">
-                <safetyCertificate-outlined :style="{ color: '#1890ff', fontSize: '19px' }" />
+                <SafetyCertificateOutlined :style="{ color: '#1890ff', fontSize: '19px' }" />
                 <span class="title-text">证书信息</span>
             </div>
             <!-- 提示文字 -->
@@ -10,15 +10,23 @@
         </div>
         <a-divider />
         <div class="content">
-            <!-- <markdown-editor /> -->
-            <EditorPreview :editorDefaultContent :previewTitle />
+            <markdown-preview :content="htmlContent" :previewTitle />
+            <markdown-editor
+                @htmlChanged="handleHtmlChanged"
+                :editorDefaultContent
+                :content="localCertificates"
+                @update:content="(val: string) => (localCertificates = val)"
+            />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { SafetyCertificateOutlined } from "@ant-design/icons-vue";
-import EditorPreview from "@/components/editor-preview/index.vue";
+import { useResumeStore } from "@/store/useResumeStore";
+import MarkdownEditor from "@/components/markdown-editor/index.vue";
+import MarkdownPreview from "@/components/markdown-preview/index.vue";
+import { computed, ref } from "vue";
 
 const editorDefaultContent = {
     title: "编辑证书信息",
@@ -26,6 +34,15 @@ const editorDefaultContent = {
 };
 
 const previewTitle: string = "证书信息预览";
+
+const htmlContent = ref("");
+
+const resumeStore = useResumeStore();
+const localCertificates = computed({ get: () => resumeStore.certificates, set: val => resumeStore.updateCertificates(val) });
+
+const handleHtmlChanged = (html: string) => {
+    htmlContent.value = html;
+};
 </script>
 
 <style scoped lang="scss">

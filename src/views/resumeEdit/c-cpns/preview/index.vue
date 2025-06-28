@@ -5,34 +5,30 @@
             <a-space direction="vertical" :size="4" align="center">
                 <div class="info-row">
                     <!-- <span class="name">hui</span> -->
-                    <h2>hui</h2>
+                    <h2>{{ basicInfo.name }}</h2>
                 </div>
                 <div class="info-row">
-                    <a-space :size="10">
-                        <span class="gender" v-if="gender">{{ gender }}</span>
-                        <a-divider type="vertical" class="custom-divider" v-if="age" />
-                        <span class="age" v-if="age">{{ age }}岁</span>
-                        <a-divider type="vertical" class="custom-divider" v-if="politicalStatus" />
-                        <span class="politicalStatus" v-if="politicalStatus">{{ politicalStatus }}</span>
-                    </a-space>
+                    <span class="text-space" v-show="basicInfo.gender">{{ basicInfo.gender }}</span>
+                    <a-divider type="vertical" class="custom-divider text-space" v-show="basicInfo.gender && (basicInfo.age || basicInfo.politicalStatus)" />
+                    <span class="text-space" v-show="basicInfo.age">{{ basicInfo.age }}岁</span>
+                    <a-divider type="vertical" class="custom-divider text-space" v-show="basicInfo.age && basicInfo.politicalStatus" />
+                    <span v-show="basicInfo.politicalStatus">{{ basicInfo.politicalStatus }}</span>
                 </div>
                 <div class="info-row">
-                    <a-space :size="10">
-                        <span class="phone">12345678910</span>
-                        <a-divider type="vertical" class="custom-divider" />
-                        <span class="email">123456789@qq.com</span>
-                    </a-space>
+                    <span class="text-space">{{ basicInfo.phone }}</span>
+                    <a-divider type="vertical" class="custom-divider text-space" v-show="basicInfo.phone && basicInfo.email" />
+                    <span>{{ basicInfo.email }}</span>
                 </div>
                 <div class="info-row">
-                    <a-space :size="10">
-                        <a href="https://github.com/Gent1eman" class="github">https://github.com/Gent1eman</a>
-                        <a-divider type="vertical" class="custom-divider" />
-                        <a href="https://coderhui.top" class="website">https://coderhui.top</a>
-                    </a-space>
+                    <a :href="basicInfo.github" class="text-space">{{ basicInfo.github }}</a>
+                    <a-divider type="vertical" class="custom-divider text-space" v-show="basicInfo.github && basicInfo.website" />
+                    <a :href="basicInfo.website">{{ basicInfo.website }}</a>
                 </div>
                 <div class="info-row">
-                    <span>求职意向：</span>
-                    <span class="applicationPosition">前端开发工程师</span>
+                    <strong>
+                        <span>求职意向：</span>
+                        <span>{{ basicInfo.applicationPosition }}</span>
+                    </strong>
                 </div>
             </a-space>
         </section>
@@ -42,7 +38,7 @@
         </div>
 
         <!-- 专业技能（通用预览） -->
-        <education-preview />
+        <education-preview v-show="true" />
         <work-preview />
         <internship-preview />
         <project-preview />
@@ -64,9 +60,8 @@ import ProjectPreview from "@/components/projectPreview/index.vue";
 import { useResumeStore } from "@/store/useResumeStore";
 import { computed, ref } from "vue";
 const resumeStore = useResumeStore();
-const gender = ref("男");
-const age = ref(20);
-const politicalStatus = ref("共青团员");
+const basicInfo = computed(() => resumeStore.basicInfo);
+
 const resumeStyle = computed(() => {
     return {
         "--color-theme": "#1677ff",
@@ -84,6 +79,11 @@ const resumeStyle = computed(() => {
 
     .custom-divider {
         background-color: #888888;
+        margin-left: 0;
+    }
+
+    .text-space {
+        margin-right: 14px;
     }
 
     .info-row {

@@ -11,7 +11,7 @@
         <a-divider />
         <div class="content">
             <a-space direction="vertical" :size="16" style="width: 100%">
-                <project-info v-for="(j, index) of count" :key="index" :idx="j" />
+                <project-info v-for="(project, index) of projects" :key="project.id" :idx="index + 1" :id="project.id" />
             </a-space>
             <a-button type="dashed" :icon="h(PlusOutlined)" class="btn" @click="handleClick">添加项目经历</a-button>
         </div>
@@ -21,7 +21,11 @@
 <script lang="ts" setup>
 import { AppstoreOutlined, PlusOutlined } from "@ant-design/icons-vue";
 import ProjectInfo from "@/components/projectInfo/index.vue";
-import { ref, h } from "vue";
+import { useResumeStore } from "@/store/useResumeStore";
+import { ref, h, computed } from "vue";
+
+const resumeStore = useResumeStore();
+const projects = computed(() => resumeStore.projects);
 const count = ref(1);
 
 const handleClick = () => {

@@ -53,7 +53,11 @@
                             </a-tooltip>
                         </a-space>
                     </p>
-                    <input type="color" :value="data.colorPrimary" />
+                    <input
+                        type="color"
+                        :value="data.colorPrimary"
+                        style="width: 32px; height: 32px; cursor: pointer; border: 1px solid #d3d3d3; border-radius: 5px; padding: 1px"
+                    />
                 </a-space>
             </div>
             <div class="setting-item">
@@ -122,7 +126,7 @@
 </template>
 
 <script lang="ts" setup>
-import { h, onMounted, ref } from "vue";
+import { h, onMounted, ref, watch } from "vue";
 import {
     CloudUploadOutlined,
     EditOutlined,
@@ -152,9 +156,6 @@ import ModuleCard from "@/components/moduleCard/index.vue";
 const open = ref<boolean>(false);
 const moduleList = ref(moduleArray);
 
-onMounted(() => {
-    console.log(moduleArray);
-});
 const showDrawer = () => {
     open.value = true;
 };
@@ -203,6 +204,15 @@ const onTabChange = (value: string, type: string) => {
 };
 
 const resumeStore = useResumeStore();
+
+watch(
+    () => resumeStore.$state,
+    () => {
+        resumeStore.saveToLocalStorage();
+    },
+    { deep: true, immediate: true }
+);
+
 const handleAutoFill = async () => {
     try {
         await resumeStore.autoFillData();

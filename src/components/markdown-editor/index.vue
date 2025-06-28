@@ -8,18 +8,18 @@
         </div>
 
         <MdEditor
-            v-model="text"
+            v-model="content"
             :preview="false"
             :placeholder="editorDefaultContent.placeholder"
             :toolbars="toolbars"
-            style="height: 260px; border-radius: 5px"
+            style="height: 300px; border-radius: 5px"
             @onHtmlChanged="emitHtmlChange"
         />
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed } from "vue";
 import { BulbOutlined } from "@ant-design/icons-vue";
 import { MdEditor, type ToolbarNames, config } from "md-editor-v3";
 import "md-editor-v3/lib/style.css";
@@ -28,24 +28,27 @@ const props = withDefaults(
     defineProps<{
         isDisplayTitle?: boolean;
         editorDefaultContent?: { [key: string]: string };
+        content?: string;
     }>(),
     {
         isDisplayTitle: true, // 默认值为 true
         editorDefaultContent: () => ({
             title: "内容编辑",
             placeholder: ""
-        })
+        }),
+        content: ""
     }
 );
 
-const text = ref("");
+const content = computed({
+    get: () => props.content || "",
+    set: val => emit("update:content", val)
+});
 
-const emit = defineEmits(["update:modelValue", "htmlChanged"]);
+const emit = defineEmits(["update:content", "htmlChanged"]);
 
 // 处理HTML变化
 const emitHtmlChange = (html: string) => {
-    console.log("%c [ editor:text ]-48", "font-size:13px; background:pink; color:#bf2c9f;", text);
-    console.log("%c [ editor:html ]-48", "font-size:13px; background:pink; color:#bf2c9f;", html);
     emit("htmlChanged", html);
 };
 
@@ -84,6 +87,9 @@ config({
     border-radius: 5px;
 }
 
+:deep(.cm-line) {
+    color: #333;
+}
 :deep(.preview-content) ul {
     margin: 0;
     padding: 4px;

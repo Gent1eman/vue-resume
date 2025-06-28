@@ -11,22 +11,39 @@
         <a-divider />
 
         <div class="content">
-            <!-- <markdown-editor /> -->
-            <EditorPreview :editorDefaultContent :previewTitle />
+            <markdown-preview :content="htmlContent" :previewTitle />
+            <markdown-editor
+                @htmlChanged="handleHtmlChanged"
+                :editorDefaultContent
+                :content="localAwards"
+                @update:content="(val: string) => (localAwards = val)"
+            />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { TrophyOutlined } from "@ant-design/icons-vue";
-import EditorPreview from "@/components/editor-preview/index.vue";
+import { useResumeStore } from "@/store/useResumeStore";
+import MarkdownEditor from "@/components/markdown-editor/index.vue";
+import MarkdownPreview from "@/components/markdown-preview/index.vue";
+import { computed, ref } from "vue";
 
 const editorDefaultContent = {
     title: "编辑获奖经历",
     placeholder: `* 蓝桥杯一等奖
 * 全国劳模`
 };
-const previewTitle:string = "获奖经历预览";
+const previewTitle: string = "获奖经历预览";
+
+const htmlContent = ref("");
+
+const resumeStore = useResumeStore();
+const localAwards = computed({ get: () => resumeStore.awards, set: val => resumeStore.updateAward(val) });
+
+const handleHtmlChanged = (html: string) => {
+    htmlContent.value = html;
+};
 </script>
 
 <style scoped lang="scss">

@@ -11,7 +11,7 @@
         <a-divider />
         <div class="content">
             <a-space direction="vertical" :size="16" style="width: 100%">
-                <work-info v-for="(j, index) of count" :key="index" :idx="j" />
+                <work-info v-for="(work, index) of works" :key="work.id" :id="work.id" :idx="index + 1" />
             </a-space>
             <a-button type="dashed" :icon="h(PlusOutlined)" class="btn" @click="handleClick">添加工作经历</a-button>
         </div>
@@ -20,8 +20,12 @@
 
 <script lang="ts" setup>
 import { RiseOutlined, PlusOutlined } from "@ant-design/icons-vue";
-import { h, ref } from "vue";
+import { computed, h, ref } from "vue";
 import WorkInfo from "@/components/workInfo/index.vue";
+import { useResumeStore } from "@/store/useResumeStore";
+
+const resumeStore = useResumeStore();
+const works = computed(() => resumeStore.workExperience);
 
 const count = ref(1);
 

@@ -30,7 +30,7 @@ export interface WorkExperienceType {
     company: string;
     position: string;
     department: string;
-    plcae: string;
+    place: string;
     workType: string;
     startDate: string | null;
     endDate: string | null;
@@ -52,7 +52,7 @@ export interface InternshipType {
     id: number;
     company: string;
     position: string;
-    plcae: string;
+    place: string;
     startDate: string | null;
     endDate: string | null;
     description: string;
