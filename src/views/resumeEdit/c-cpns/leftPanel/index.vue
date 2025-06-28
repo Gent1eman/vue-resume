@@ -56,7 +56,7 @@
                     </p>
                     <input
                         type="color"
-                        v-model="settingStore.themeColor"
+                        v-model="settingStore.settings.themeColor"
                         style="width: 32px; height: 32px; cursor: pointer; border: 1px solid #d3d3d3; border-radius: 5px; padding: 1px"
                     />
                 </a-space>
@@ -75,7 +75,7 @@
                             </a-tooltip>
                         </a-space>
                     </p>
-                    <a-input-number id="inputNumber" :min="1" v-model:value="settingStore.moduleSpace" />
+                    <a-input-number id="inputNumber" :min="1" v-model:value="settingStore.settings.moduleSpace" />
                 </a-space>
             </div>
             <div class="setting-item">
@@ -92,7 +92,7 @@
                             </a-tooltip>
                         </a-space>
                     </p>
-                    <a-input-number id="inputNumber" :min="0" :step="0.1" v-model:value="settingStore.lineHeight" />
+                    <a-input-number id="inputNumber" :min="0" :step="0.1" v-model:value="settingStore.settings.lineHeight" />
                 </a-space>
             </div>
             <a-divider style="margin-top: 12px; margin-bottom: 8px" />
@@ -108,16 +108,17 @@
                     </a-tooltip>
                 </a-space>
                 <a-divider style="margin-top: 12px" />
+
                 <div class="drag-content">
                     <VueDraggable
                         ref="el"
-                        v-model="moduleList"
+                        v-model="settingStore.settings.modulesSort"
                         :animation="150"
                         ghostClass="ghost"
                         class="flex flex-col gap-2 p-4 w-300px h-300px m-auto bg-gray-500/5 rounded"
                     >
-                        <template v-for="item in moduleList" :key="item.id">
-                            <module-card :title="item.name" :icon="item.icon" />
+                        <template v-for="item in settingStore.settings.modulesSort" :key="item.id">
+                            <module-card :title="item.name" :icon="item.icon" :id="item.id" />
                         </template>
                     </VueDraggable>
                 </div>
@@ -158,6 +159,7 @@ const open = ref<boolean>(false);
 const moduleList = ref(moduleArray);
 const resumeStore = useResumeStore();
 const settingStore = useSettingStore();
+
 const showDrawer = () => {
     open.value = true;
 };

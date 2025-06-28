@@ -1,39 +1,52 @@
 import { defineStore } from "pinia";
 import { ref, watch } from "vue";
-
+import { moduleArray } from "@/utils/module-sort";
 export const useSettingStore = defineStore("setting", () => {
     // 默认值
     const defaults = {
         themeColor: "#1677ff",
         lineHeight: 2,
-        moduleSpace: 10 // 单位px
+        moduleSpace: 10, // 单位px
+        modules: {
+            education: true, // 教育背景
+            work: true, // 工作经历
+            internships: true, // 专业技能
+            projects: true, // 项目经历
+            skills: true, // 实习经历
+            awards: true, // 获奖经历
+            selfEval: true, // 自我评价
+            research: true, // 科研经历
+            campus: true, // 校园经历
+            certificates: true // 证书信息
+        },
+        modulesSort: moduleArray
     };
 
-    // 主题颜色
-    const themeColor = ref<string>(localStorage.getItem("themeColor") || defaults.themeColor);
-    const lineHeight = ref<number>(parseFloat(localStorage.getItem("lineHeight") || defaults.lineHeight.toString()));
-    const moduleSpace = ref<number>(parseInt(localStorage.getItem("moduleSpace") || defaults.moduleSpace.toString()));
+    // 从loaclStorage初始化（合并默认值）
+    const loadSetting = () => {
+        const saved = localStorage.getItem("resumeSettings");
+        return saved ? JSON.parse(saved) : defaults;
+    };
 
-    // 监听变化自动保存到localStorage
-    watch([themeColor, lineHeight, moduleSpace], () => {
-        console.log(1);
+    // 统一响应式状态对象
+    const settings = ref(loadSetting());
 
-        localStorage.setItem("themeColor", themeColor.value);
-        localStorage.setItem("lineHeight", lineHeight.value.toString());
-        localStorage.setItem("moduleSpace", moduleSpace.value.toString());
-    });
+    // 监听整个对象的变化
+    watch(
+        () => settings.value,
+        newVal => {
+            localStorage.setItem("resumeSettings", JSON.stringify(newVal));
+        },
+        { deep: true }
+    );
 
     // 重置默认值
     const resetToDefaults = () => {
-        themeColor.value = defaults.themeColor;
-        lineHeight.value = defaults.lineHeight;
-        moduleSpace.value = defaults.moduleSpace;
+        settings.value = { ...defaults };
     };
 
     return {
-        themeColor,
-        lineHeight,
-        moduleSpace,
+        settings,
         resetToDefaults
     };
 });

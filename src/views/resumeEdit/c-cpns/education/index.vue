@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, h, ref, watch } from "vue";
+import { computed, h, ref } from "vue";
 import { PlusOutlined, BookOutlined } from "@ant-design/icons-vue";
 import EducationInfo from "@/components/educationInfo/index.vue";
 import { useResumeStore } from "@/store";

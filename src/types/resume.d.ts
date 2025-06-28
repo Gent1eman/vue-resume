@@ -58,7 +58,7 @@ export interface InternshipType {
     description: string;
 }
 
-// 简历数据类型
+// store数据类型
 export interface ResumeStateType {
     basicInfo: BasicInfoType;
     education: EducationType[];

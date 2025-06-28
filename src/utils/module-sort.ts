@@ -1,4 +1,3 @@
-
 import {
     AppstoreOutlined,
     BookOutlined,
@@ -12,6 +11,11 @@ import {
     TrophyOutlined
 } from "@ant-design/icons-vue";
 
+import EducationPreview from "@/components/educationPreview/index.vue";
+import WorkPreview from "@/components/workPreview/index.vue";
+import InternshipPreview from "@/components/internshipPreview/index.vue";
+import ProjectPreview from "@/components/projectPreview/index.vue";
+import type { Component } from "vue";
 
 // 模块排序
 export const moduleArray = [
@@ -66,3 +70,18 @@ export const moduleArray = [
         icon: SafetyCertificateOutlined
     }
 ];
+
+export const moduleComponents: ModuleComponents = {
+    education: EducationPreview,
+    work: WorkPreview,
+    internships: InternshipPreview,
+    projects: ProjectPreview
+};
+
+export type ModuleID = "education" | "work" | "internships" | "projects";
+
+export type GeneralModuleID = "skills" | "awards" | "selfEval" | "research" | "campus" | "certificates";
+
+export type ModuleComponents = {
+    [K in ModuleID]: Component;
+};

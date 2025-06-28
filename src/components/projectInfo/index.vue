@@ -33,6 +33,8 @@
                             <a-config-provider :locale="zhCN">
                                 <a-range-picker
                                     style="width: 100%"
+                                    format="YYYY-MM"
+                                    picker="month"
                                     :placeholder="['开始时间', '结束时间（未结束可不选）']"
                                     v-model:value="dateRange"
                                     @change="handleDateChange"
@@ -93,8 +95,8 @@ const dateRange = computed(() => [
 const handleDateChange = (dates: [Dayjs | null, Dayjs | null]) => {
     if (!localProject.value) return;
 
-    localProject.value.startDate = dates[0]?.format("YYYY-MM-DD") || "";
-    localProject.value.endDate = dates[1]?.format("YYYY-MM-DD") || "";
+    localProject.value.startDate = dates[0]?.format("YYYY-MM") || "";
+    localProject.value.endDate = dates[1]?.format("YYYY-MM") || "";
 };
 </script>
 

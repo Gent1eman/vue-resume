@@ -38,36 +38,59 @@
         </div>
 
         <!-- 专业技能（通用预览） -->
-        <education-preview v-show="true" />
-        <work-preview />
-        <internship-preview />
-        <project-preview />
-        <general-preview title="专业技能" :content="resumeStore.skills" />
-        <general-preview title="获奖经历" :content="resumeStore.awards" />
-        <general-preview title="个人评价" :content="resumeStore.selfEval" />
-        <general-preview title="科研成果" :content="resumeStore.research" />
-        <general-preview title="校园经历" :content="resumeStore.campus" />
-        <general-preview title="证书信息" :content="resumeStore.certificates" />
+        <!-- 得使用v-if，v-show pdf导出依然存在（dom没被移除） -->
+        <!-- <education-preview v-if="modules.education" />
+        <work-preview v-if="modules.work" />
+        <internship-preview v-if="modules.internships" />
+        <project-preview v-if="modules.projects" />
+        <general-preview title="专业技能" v-if="modules.skills" :content="resumeStore.skills" />
+        <general-preview title="获奖经历" v-if="modules.awards" :content="resumeStore.awards" />
+        <general-preview title="个人评价" v-if="modules.selfEval" :content="resumeStore.selfEval" />
+        <general-preview title="科研成果" v-if="modules.research" :content="resumeStore.research" />
+        <general-preview title="校园经历" v-if="modules.campus" :content="resumeStore.campus" />
+        <general-preview title="证书信息" v-if="modules.certificates" :content="resumeStore.certificates" /> -->
+
+        <template v-for="module in settingStore.settings.modulesSort" :key="module.id">
+            <!-- 教育背景、工作经历、实习经历、项目经历 -->
+            <template v-if="['education', 'work', 'internships', 'projects'].includes(module.id)">
+                <component :is="moduleComponents[module.id as ModuleID]" v-if="settingStore.settings.modules[module.id]"></component>
+            </template>
+            <!-- 通用组件 -->
+            <general-preview
+                v-else-if="settingStore.settings.modules[module.id]"
+                :title="module.name"
+                :content="generalPreviewModules[module.id as GeneralModuleID]"
+            ></general-preview>
+        </template>
     </div>
 </template>
 
 <script lang="ts" setup>
 import GeneralPreview from "@/components/generalPreview/index.vue";
-import EducationPreview from "@/components/educationPreview/index.vue";
-import WorkPreview from "@/components/workPreview/index.vue";
-import InternshipPreview from "@/components/internshipPreview/index.vue";
-import ProjectPreview from "@/components/projectPreview/index.vue";
 import { useResumeStore, useSettingStore } from "@/store";
 import { computed } from "vue";
+import { moduleComponents, type GeneralModuleID, type ModuleID } from "@/utils/module-sort";
+
 const resumeStore = useResumeStore();
 const settingStore = useSettingStore();
+
+// 通用组件的数据对象
+const generalPreviewModules = computed(() => ({
+    skills: resumeStore.skills,
+    awards: resumeStore.awards,
+    selfEval: resumeStore.selfEval,
+    research: resumeStore.research,
+    campus: resumeStore.campus,
+    certificates: resumeStore.certificates
+}));
+
 const basicInfo = computed(() => resumeStore.basicInfo);
 
 const resumeStyle = computed(() => {
     return {
-        "--color-theme": settingStore.themeColor,
-        "--line-height": settingStore.lineHeight,
-        "--module-space": `${settingStore.moduleSpace}px`
+        "--color-theme": settingStore.settings.themeColor,
+        "--line-height": parseFloat(settingStore.settings.lineHeight),
+        "--module-space": `${parseInt(settingStore.settings.moduleSpace)}px`
     };
 });
 </script>

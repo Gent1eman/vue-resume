@@ -50,7 +50,8 @@
                             <a-config-provider :locale="zhCN">
                                 <a-range-picker
                                     style="width: 100%"
-                                    format="YYYY-MM-DD"
+                                    format="YYYY-MM"
+                                    picker="month"
                                     :placeholder="['开始时间', '结束时间（在读可不选）']"
                                     v-model:value="dateRange"
                                     @change="handleDateChange"
@@ -107,8 +108,8 @@ const dateRange = computed(() => [
 const handleDateChange = (dates: [Dayjs | null, Dayjs | null]) => {
     if (!localEducation.value) return;
 
-    localEducation.value.startDate = dates[0]?.format("YYYY-MM-DD") || "";
-    localEducation.value.endDate = dates[1]?.format("YYYY-MM-DD") || "";
+    localEducation.value.startDate = dates[0]?.format("YYYY-MM") || "";
+    localEducation.value.endDate = dates[1]?.format("YYYY-MM") || "";
 };
 </script>
 

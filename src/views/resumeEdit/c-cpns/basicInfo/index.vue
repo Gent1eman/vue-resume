@@ -139,16 +139,6 @@ import { useResumeStore } from "@/store";
 // 获取store示例
 const resumeStore = useResumeStore();
 const basicInfo = computed(() => resumeStore.basicInfo);
-
-// watch监听store的变化，保存到localStorage中
-// watch(
-//     () => resumeStore.$state, // 被监视的响应式数据
-//     () => {
-//         // 当上面数据发生变化时执行的回调函数
-//         resumeStore.saveToLocalStorage(); // 变化时执行的操作
-//     },
-//     { deep: true } // 深度监听
-// );
 </script>
 
 <style scoped lang="scss">

@@ -2,14 +2,14 @@
     <div class="module-card">
         <div class="left">
             <a-space>
-                <MenuOutlined style="color: #9CA3AF" />
+                <MenuOutlined style="color: #9ca3af" />
                 <component :is="icon" class="text-blue" />
                 <span>{{ title }}</span>
             </a-space>
         </div>
         <div class="right">
             <a-space>
-                <a-checkbox v-model:checked="checked"></a-checkbox>
+                <a-checkbox v-model:checked="modules[props.id]" />
                 <EyeOutlined v-if="checked" class="text-green" />
                 <EyeInvisibleOutlined v-else class="text-dark" />
                 <span :class="{ 'text-green': checked, 'text-dark': !checked }">显示</span>
@@ -20,12 +20,18 @@
 
 <script lang="ts" setup>
 import { MenuOutlined, EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons-vue";
+import { useSettingStore } from "@/store";
 import { ref } from "vue";
 
-defineProps<{
+const props = defineProps<{
+    id: string;
     title: string;
     icon: any;
 }>();
+
+const settingStore = useSettingStore();
+const { settings } = settingStore;
+const { modules } = settings;
 
 const checked = ref(true);
 </script>
