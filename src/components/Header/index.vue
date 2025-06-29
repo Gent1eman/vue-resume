@@ -5,11 +5,22 @@
 </template>
 
 <script lang="ts" setup>
-import { h, ref } from "vue";
-import { AppstoreOutlined, SettingOutlined, EditOutlined, MessageOutlined } from "@ant-design/icons-vue";
+import { h, ref, watch } from "vue";
+import { SettingOutlined, EditOutlined, MessageOutlined } from "@ant-design/icons-vue";
 import type { MenuProps } from "ant-design-vue";
 import router from "@/router";
-const current = ref<string[]>(["edit"]);
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+const current = ref<string[]>([route.name as string]);
+
+watch(
+    () => route.name,
+    name => {
+        if (name) current.value = [name.toString()];
+    },
+    { immediate: true }
+);
 const items = ref<MenuProps["items"]>([
     {
         key: "edit",
@@ -17,12 +28,12 @@ const items = ref<MenuProps["items"]>([
         label: "简历编辑",
         onClick: () => router.push("/resume/edit")
     },
-    {
-        key: "template",
-        icon: () => h(AppstoreOutlined),
-        label: "简历模板",
-        onClick: () => router.push("/resume/template")
-    },
+    // {
+    //     key: "template",
+    //     icon: () => h(AppstoreOutlined),
+    //     label: "简历模板",
+    //     onClick: () => router.push("/resume/template")
+    // },
     {
         key: "aiDeep",
         icon: () => h(MessageOutlined),

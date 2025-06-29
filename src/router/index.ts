@@ -17,12 +17,12 @@ const routes: Array<RouteRecordRaw> = [
                 component: () => import("@/views/resumeEdit/index.vue"),
                 meta: { title: "简历工坊 - 编辑" }
             },
-            {
-                path: "/resume/template",
-                name: "template",
-                component: () => import("@/views/resumeTemplate/index.vue"),
-                meta: { title: "简历工坊 - 模板" }
-            },
+            // {
+            //     path: "/resume/template",
+            //     name: "template",
+            //     component: () => import("@/views/resumeTemplate/index.vue"),
+            //     meta: { title: "简历工坊 - 模板" }
+            // },
             {
                 path: "/resume/aiDeep",
                 name: "aiDeep",

@@ -71,10 +71,10 @@ const renderMarkdown = (text: string) => DOMPurify.sanitize(marked.parse(text) a
 
     :deep(.edu-description) {
         ul {
-            margin: 0 20px;
+            margin-left: 20px;
         }
         ol {
-            margin: 0 16px;
+            margin-left: 16px;
             li {
                 padding-left: 4px;
             }

@@ -41,29 +41,12 @@ const props = defineProps<{
     border-radius: 5px;
 }
 
-/* :deep(.preview-content) ul {
-    margin: 0;
-    padding: 0 4px;
-    list-style-position: inside;
-}
-
-:deep(.preview-content) ol {
-    margin: 0;
-    padding: 0 3px;
-    list-style-position: inside;
-}
-
-:deep(.preview-content) li {
-    text-indent: -0.5em;
-    padding-left: 1em;
-} */
-
 :deep(.preview-content) {
     ul {
-        margin: 0 20px;
+        margin-left: 20px;
     }
     ol {
-        margin: 0 16px;
+        margin-left: 16px;
         li {
             padding-left: 4px;
         }

@@ -37,10 +37,10 @@ const htmlContent = computed(() => {
 
     :deep(.preview-content) {
         ul {
-            margin: 0 20px;
+            margin-left: 20px;
         }
         ol {
-            margin: 0 16px;
+            margin-left: 16px;
             li {
                 padding-left: 4px;
             }

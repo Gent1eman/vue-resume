@@ -20,9 +20,9 @@
                     <span>{{ basicInfo.email }}</span>
                 </div>
                 <div class="info-row">
-                    <a :href="basicInfo.github" class="text-space">{{ basicInfo.github }}</a>
+                    <a :href="basicInfo.github" target="_blank" class="text-space">{{ basicInfo.github }}</a>
                     <a-divider type="vertical" class="custom-divider text-space" v-show="basicInfo.github && basicInfo.website" />
-                    <a :href="basicInfo.website">{{ basicInfo.website }}</a>
+                    <a :href="basicInfo.website" target="_blank">{{ basicInfo.website }}</a>
                 </div>
                 <div class="info-row">
                     <strong>
@@ -34,7 +34,7 @@
         </section>
         <!-- 个人头像 -->
         <div class="avator">
-            <img src="../../../../assets/image/avator.jpg" alt="" />
+            <a-avatar :src="basicInfo.avatar" style="width: 120px; height: 168px; border-radius: 4px" />
         </div>
 
         <!-- 专业技能（通用预览） -->
@@ -60,7 +60,7 @@
                 v-else-if="settingStore.settings.modules[module.id]"
                 :title="module.name"
                 :content="generalPreviewModules[module.id as GeneralModuleID]"
-            ></general-preview>
+            />
         </template>
     </div>
 </template>
@@ -129,12 +129,7 @@ const resumeStyle = computed(() => {
     .avator {
         position: absolute;
         right: 0;
-        top: 10px;
-        img {
-            height: 137px;
-            width: 95px;
-            border-radius: 4px;
-        }
+        top: 5px;
     }
 }
 </style>
