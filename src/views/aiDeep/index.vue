@@ -9,7 +9,7 @@
         </a-upload>
 
         <!-- 裁剪弹窗 -->
-        <a-modal title="裁剪头像" v-model:visible="showCropper" :width="518" :maskClosable="false" @ok="handleCropOk" okText="确认" cancelText="取消">
+        <a-modal title="裁剪头像" v-model:open="showCropper" :width="518" :maskClosable="false" @ok="handleCropOk" okText="确认" cancelText="取消">
             <div class="cropper-container">
                 <VueCropper
                     ref="cropperRef"

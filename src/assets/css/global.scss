@@ -1,0 +1,22 @@
+/* 隐藏滚动条（Chrome） */
+.print-mode::-webkit-scrollbar {
+    display: none;
+}
+
+.print-mode ol {
+    padding-left: 0; /* 可选，消除缩进 */
+    margin-left: 0;
+}
+
+.print-mode ol {
+    counter-reset: list-counter;
+}
+
+.print-mode ol li {
+    counter-increment: list-counter;
+}
+
+.print-mode ol li::before {
+    content: counter(list-counter) ". ";
+    margin-right: 0.5em;
+}

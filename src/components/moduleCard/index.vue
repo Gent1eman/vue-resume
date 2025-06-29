@@ -10,9 +10,9 @@
         <div class="right">
             <a-space>
                 <a-checkbox v-model:checked="modules[props.id]" />
-                <EyeOutlined v-if="checked" class="text-green" />
+                <EyeOutlined v-if="modules[props.id]" class="text-green" />
                 <EyeInvisibleOutlined v-else class="text-dark" />
-                <span :class="{ 'text-green': checked, 'text-dark': !checked }">显示</span>
+                <span :class="{ 'text-green': modules[props.id], 'text-dark': !modules[props.id] }">显示</span>
             </a-space>
         </div>
     </div>
@@ -32,8 +32,6 @@ const props = defineProps<{
 const settingStore = useSettingStore();
 const { settings } = settingStore;
 const { modules } = settings;
-
-const checked = ref(true);
 </script>
 
 <style scoped lang="scss">

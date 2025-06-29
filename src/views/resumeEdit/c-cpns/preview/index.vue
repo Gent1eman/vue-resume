@@ -1,11 +1,11 @@
 <template>
-    <div class="preview-content" :style="resumeStyle">
+    <div class="preview-content" ref="resumeContentRef" :style="resumeStyle">
         <!-- 个人信息 -->
         <section class="basic-info">
             <a-space direction="vertical" :size="4" align="center">
                 <div class="info-row">
                     <!-- <span class="name">hui</span> -->
-                    <h2>{{ basicInfo.name }}</h2>
+                    <span class="name">{{ basicInfo.name }}</span>
                 </div>
                 <div class="info-row">
                     <span class="text-space" v-show="basicInfo.gender">{{ basicInfo.gender }}</span>
@@ -34,7 +34,7 @@
         </section>
         <!-- 个人头像 -->
         <div class="avator">
-            <a-avatar :src="basicInfo.avatar" style="width: 120px; height: 168px; border-radius: 4px" />
+            <a-image :src="basicInfo.avatar" style="width: 120px; height: 168px" />
         </div>
 
         <!-- 专业技能（通用预览） -->
@@ -68,11 +68,13 @@
 <script lang="ts" setup>
 import GeneralPreview from "@/components/generalPreview/index.vue";
 import { useResumeStore, useSettingStore } from "@/store";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { moduleComponents, type GeneralModuleID, type ModuleID } from "@/utils/module-sort";
 
 const resumeStore = useResumeStore();
 const settingStore = useSettingStore();
+
+const resumeContentRef = ref<HTMLElement | null>(null);
 
 // 通用组件的数据对象
 const generalPreviewModules = computed(() => ({
@@ -93,6 +95,11 @@ const resumeStyle = computed(() => {
         "--module-space": `${parseInt(settingStore.settings.moduleSpace)}px`
     };
 });
+
+// 暴露出去
+defineExpose({
+    resumeContentRef
+});
 </script>
 
 <style scoped lang="scss">
@@ -112,6 +119,12 @@ const resumeStyle = computed(() => {
 
     .info-row {
         width: 100%;
+
+        .name {
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+        }
     }
     span {
         font-size: 14px;

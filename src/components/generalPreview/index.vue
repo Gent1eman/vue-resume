@@ -1,6 +1,6 @@
 <template>
     <div class="general-preview">
-        <h4 class="preview-text">{{ title }}</h4>
+        <span class="preview-text">{{ title }}</span>
         <a-divider class="custom-divider" />
         <div class="preview-content" v-html="htmlContent"></div>
     </div>

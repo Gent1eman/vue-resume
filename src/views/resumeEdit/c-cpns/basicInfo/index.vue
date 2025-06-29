@@ -9,7 +9,7 @@
             <p class="hint-text">请填写您的基本个人信息，这些信息将显示在简历的顶部区域</p>
         </div>
         <a-divider />
-        
+
         <!-- 具体内容 -->
         <div>
             <div class="form-data">
@@ -135,7 +135,7 @@
     </div>
 
     <!-- 裁剪弹窗 -->
-    <a-modal title="裁剪头像" v-model:visible="showCropper" :width="518" :maskClosable="false" @ok="handleCropOk" okText="确认" cancelText="取消">
+    <a-modal title="裁剪头像" v-model:open="showCropper" :width="518" :maskClosable="false" @ok="handleCropOk" okText="确认" cancelText="取消">
         <div class="cropper-container">
             <VueCropper
                 ref="cropperRef"
@@ -155,7 +155,7 @@
 </template>
 
 <script lang="ts" setup>
-import { h, computed, watch, ref, onMounted } from "vue";
+import { h, computed, ref } from "vue";
 import { politicalOptions, genderOptions } from "@/utils/data-options";
 import {
     UserOutlined,
@@ -179,10 +179,6 @@ type VueCropperInstance = ComponentPublicInstance & {
     getCropBlob: (cb: (blob: Blob) => void) => void;
     reset: () => void;
 };
-
-onMounted(() => {
-    console.log(resumeStore.basicInfo);
-});
 
 // 获取store示例
 const resumeStore = useResumeStore();

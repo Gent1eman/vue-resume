@@ -1,6 +1,6 @@
 <template>
     <div class="work-preview">
-        <h4 class="preview-text">工作经历</h4>
+        <span class="preview-text">工作经历</span>
         <a-divider class="custom-divider" />
         <div class="preview-content" v-for="item in datas" :key="item.id">
             <div class="work-info">
