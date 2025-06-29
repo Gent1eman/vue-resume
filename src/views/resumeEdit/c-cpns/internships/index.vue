@@ -13,7 +13,7 @@
             <a-space direction="vertical" :size="16" style="width: 100%">
                 <internship-info v-for="(internship, index) of internships" :key="internship.id" :idx="index + 1" :id="internship.id" />
             </a-space>
-            <a-button type="dashed" :icon="h(PlusOutlined)" class="btn" @click="handleClick">添加实习经历</a-button>
+            <a-button type="dashed" :icon="h(PlusOutlined)" class="btn" @click="addInternship">添加实习经历</a-button>
         </div>
     </div>
 </template>
@@ -22,15 +22,20 @@
 import { SolutionOutlined, PlusOutlined } from "@ant-design/icons-vue";
 import InternshipInfo from "@/components/internshipInfo/index.vue";
 import { useResumeStore } from "@/store";
-import { ref, h, computed } from "vue";
+import { h, computed } from "vue";
 
 const resumeStore = useResumeStore();
 const internships = computed(() => resumeStore.internships);
 
-const count = ref(1);
-
-const handleClick = () => {
-    count.value += 1;
+const addInternship = () => {
+    resumeStore.addInternship({
+        company: "",
+        position: "",
+        place: "",
+        startDate: "",
+        endDate: "",
+        description: ""
+    });
 };
 </script>
 

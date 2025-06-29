@@ -190,18 +190,18 @@ export const useResumeStore = defineStore("resume", {
             this.saveToLocalStorage();
         },
 
-        // 新增教育经历
+        // 新增教育背景
         // Omit<T, 'id'> - 排除 id 属性
         addEducation(newItem: Omit<EducationType, "id">) {
             this.addItem(this.education, newItem);
         },
 
-        // 删除教育经历
+        // 删除教育背景
         deleteEducation(id: number) {
             this.deleteItem(this.education, id);
         },
 
-        // 更新教育经历
+        // 更新教育背景
         updateEducation(updatedItem: EducationType) {
             this.updateItem(this.education, updatedItem);
         },

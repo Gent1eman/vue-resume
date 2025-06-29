@@ -2,7 +2,7 @@
     <div class="work-info">
         <a-card :title="`工作经历#${idx}`">
             <template #extra>
-                <a-button type="text" :icon="h(DeleteOutlined)" danger />
+                <a-button type="text" :icon="h(DeleteOutlined)" danger @click="removeWorkExperience" />
             </template>
             <a-form layout="vertical" v-model:value="localWork">
                 <a-row :gutter="[24, 64]">
@@ -96,6 +96,7 @@ import MarkdownEditor from "@/components/markdown-editor/index.vue";
 import { workTypeOptions } from "@/utils/data-options";
 import { useResumeStore } from "@/store";
 import dayjs, { Dayjs } from "dayjs";
+import { message } from "ant-design-vue";
 
 // 编辑器的默认值
 const editorDefaultContent = {
@@ -121,6 +122,12 @@ const handleDateChange = (dates: [Dayjs | null, Dayjs | null]) => {
 
     localWork.value.startDate = dates[0]?.format("YYYY-MM") || "";
     localWork.value.endDate = dates[1]?.format("YYYY-MM") || "";
+};
+
+// 删除工作经历
+const removeWorkExperience = () => {
+    resumeStore.deleteWorkExperience(props.id);
+    message.success("工作经历删除成功！");
 };
 </script>
 

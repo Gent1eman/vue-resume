@@ -2,7 +2,7 @@
     <div class="intern-info">
         <a-card :title="`实习经历#${idx}`">
             <template #extra>
-                <a-button type="text" :icon="h(DeleteOutlined)" danger />
+                <a-button type="text" :icon="h(DeleteOutlined)" danger @click="removeInternship" />
             </template>
             <a-form layout="vertical" v-model:value="localInternship">
                 <a-row :gutter="[24, 64]">
@@ -79,6 +79,7 @@ import zhCN from "ant-design-vue/es/locale/zh_CN";
 import MarkdownEditor from "@/components/markdown-editor/index.vue";
 import { useResumeStore } from "@/store";
 import dayjs, { Dayjs } from "dayjs";
+import { message } from "ant-design-vue";
 
 // 编辑器的默认值
 const editorDefaultContent = {
@@ -104,6 +105,12 @@ const handleDateChange = (dates: [Dayjs | null, Dayjs | null]) => {
 
     localInternship.value.startDate = dates[0]?.format("YYYY-MM") || "";
     localInternship.value.endDate = dates[1]?.format("YYYY-MM") || "";
+};
+
+// 删除实习经历
+const removeInternship = () => {
+    resumeStore.deleteInternship(props.id);
+    message.success("实习经历删除成功！");
 };
 </script>
 

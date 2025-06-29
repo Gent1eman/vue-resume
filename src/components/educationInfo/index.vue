@@ -1,8 +1,8 @@
 <template>
     <div class="edu-info">
-        <a-card :title="`教育经历#${idx}`">
+        <a-card :title="`教育背景#${idx}`">
             <template #extra>
-                <a-button type="text" :icon="h(DeleteOutlined)" danger />
+                <a-button type="text" :icon="h(DeleteOutlined)" danger @click="removeEducation" />
             </template>
             <a-form layout="vertical" v-model:value="localEducation">
                 <a-row :gutter="[24, 64]">
@@ -88,9 +88,10 @@ import { degreeOptions } from "@/utils/data-options";
 import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
 import { useResumeStore } from "@/store";
+import { message } from "ant-design-vue";
 // 编辑器的默认值
 const editorDefaultContent = {
-    placeholder: `- **专业课程**：计算机视觉、工程伦理等。 **图像认知重庆重点实验室** **研究方向**：工业瑕疵检测（Computer Vision）`
+    placeholder: `- **专业课程**：计算机视觉、工程伦理等。`
 };
 const props = defineProps<{ idx: number; id: number }>();
 const resumeStore = useResumeStore();
@@ -110,6 +111,12 @@ const handleDateChange = (dates: [Dayjs | null, Dayjs | null]) => {
 
     localEducation.value.startDate = dates[0]?.format("YYYY-MM") || "";
     localEducation.value.endDate = dates[1]?.format("YYYY-MM") || "";
+};
+
+// 删除教育背景
+const removeEducation = () => {
+    resumeStore.deleteEducation(props.id);
+    message.success("教育背景删除成功！");
 };
 </script>
 

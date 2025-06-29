@@ -13,7 +13,7 @@
             <a-space direction="vertical" :size="16" style="width: 100%">
                 <project-info v-for="(project, index) of projects" :key="project.id" :idx="index + 1" :id="project.id" />
             </a-space>
-            <a-button type="dashed" :icon="h(PlusOutlined)" class="btn" @click="handleClick">添加项目经历</a-button>
+            <a-button type="dashed" :icon="h(PlusOutlined)" class="btn" @click="addProject">添加项目经历</a-button>
         </div>
     </div>
 </template>
@@ -22,14 +22,20 @@
 import { AppstoreOutlined, PlusOutlined } from "@ant-design/icons-vue";
 import ProjectInfo from "@/components/projectInfo/index.vue";
 import { useResumeStore } from "@/store";
-import { ref, h, computed } from "vue";
+import { h, computed } from "vue";
 
 const resumeStore = useResumeStore();
 const projects = computed(() => resumeStore.projects);
-const count = ref(1);
 
-const handleClick = () => {
-    count.value += 1;
+// 添加项目经历
+const addProject = () => {
+    resumeStore.addProject({
+        projectName: "",
+        role: "",
+        startDate: "",
+        endDate: "",
+        description: ""
+    });
 };
 </script>
 

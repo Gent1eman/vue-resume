@@ -13,7 +13,7 @@ export const resumeTemplate = {
         avatar: "" // 头像
     },
 
-    // 教育经历
+    // 教育背景
     education: [
         {
             id: 1, // 唯一标识

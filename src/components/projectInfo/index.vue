@@ -2,7 +2,7 @@
     <div class="project-info">
         <a-card :title="`项目经历#${idx}`">
             <template #extra>
-                <a-button type="text" :icon="h(DeleteOutlined)" danger />
+                <a-button type="text" :icon="h(DeleteOutlined)" danger @click="removeProject" />
             </template>
             <a-form layout="vertical" v-model:value="localProject">
                 <a-row :gutter="[24, 64]">
@@ -69,6 +69,7 @@ import zhCN from "ant-design-vue/es/locale/zh_CN";
 import MarkdownEditor from "@/components/markdown-editor/index.vue";
 import { useResumeStore } from "@/store";
 import dayjs, { Dayjs } from "dayjs";
+import { message } from "ant-design-vue";
 
 // 编辑器的默认值
 const editorDefaultContent = {
@@ -97,6 +98,12 @@ const handleDateChange = (dates: [Dayjs | null, Dayjs | null]) => {
 
     localProject.value.startDate = dates[0]?.format("YYYY-MM") || "";
     localProject.value.endDate = dates[1]?.format("YYYY-MM") || "";
+};
+
+// 删除项目经历
+const removeProject = () => {
+    resumeStore.deleteProject(props.id);
+    message.success("项目经历删除成功！");
 };
 </script>
 

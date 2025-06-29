@@ -14,7 +14,7 @@
             <a-space direction="vertical" :size="16" style="width: 100%">
                 <education-info v-for="(edu, index) of educations" :key="edu.id" :id="edu.id" :idx="index + 1" />
             </a-space>
-            <a-button type="dashed" :icon="h(PlusOutlined)" class="btn" @click="handleClick">添加教育经历</a-button>
+            <a-button type="dashed" :icon="h(PlusOutlined)" class="btn" @click="AddEducation">添加教育背景</a-button>
         </div>
     </div>
 </template>
@@ -37,13 +37,21 @@ const educations = computed(() => resumeStore.education);
 //     },
 //     { deep: true }
 // );
-const count = ref(1);
 
-const handleClick = () => {
-    count.value += 1;
+// 添加
+const AddEducation = () => {
+    resumeStore.addEducation({
+        school: "",
+        major: "",
+        degree: "",
+        gpa: "",
+        startDate: "",
+        endDate: "",
+        description: ""
+    });
 };
 
-// 删除教育经历
+// 删除教育背景
 const handleDeleteEducation = (id: number) => {
     resumeStore.deleteEducation(id);
 };
