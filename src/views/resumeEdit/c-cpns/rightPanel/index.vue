@@ -1,6 +1,9 @@
 <template>
     <div class="right-panel">
         <a-card title="简历预览" :bodyStyle="{ height: 'calc(100vh - 185px)', overflow: 'auto' }">
+            <!-- <template #extra>
+                <a-button type="text" :icon="h(ExportOutlined)" @click="exportToPDF">导出JSON</a-button>
+            </template> -->
             <div class="preview-wrapper">
                 <Preview ref="previewRef" />
             </div>

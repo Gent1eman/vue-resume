@@ -31,8 +31,10 @@
 import { useResumeStore } from "@/store";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
+import { computed } from "vue";
 const resumeStore = useResumeStore();
-const datas = resumeStore.internships;
+
+const datas = computed(() => resumeStore.internships);
 
 const renderMarkdown = (text: string) => DOMPurify.sanitize(marked.parse(text) as string);
 </script>
