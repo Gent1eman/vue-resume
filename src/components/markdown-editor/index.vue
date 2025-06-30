@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { BulbOutlined } from "@ant-design/icons-vue";
 import { MdEditor, type ToolbarNames, config } from "md-editor-v3";
 import "md-editor-v3/lib/style.css";

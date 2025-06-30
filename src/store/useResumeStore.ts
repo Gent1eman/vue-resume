@@ -6,10 +6,10 @@ import { message } from "ant-design-vue";
 export const useResumeStore = defineStore("resume", {
     state: (): ResumeStateType => {
         // 从localStoreage获取保存的数据
-        const savedResumeData = localStorage.getItem("resumeData");
-        const savedCurrentId = localStorage.getItem("currentId");
+        const savedResumeData = localStorage.getItem("coderhui-resumeData");
+        const savedCurrentId = localStorage.getItem("coderhui-currentId");
         // 检查是否首次访问
-        const isFirstVisit = localStorage.getItem("isFirstVisit") === null;
+        const isFirstVisit = localStorage.getItem("coderhui-isFirstVisit") === null;
         const currentId = savedCurrentId && !isNaN(Number(savedCurrentId)) ? Number(savedCurrentId) : 1;
 
         // 此处首先用木板数据初始化，然后再从localstorage中读取数据
@@ -29,7 +29,7 @@ export const useResumeStore = defineStore("resume", {
 
         // 如果是首次访问，标记并自动填充数据
         if (isFirstVisit) {
-            localStorage.setItem("isFirstVisit", "false");
+            localStorage.setItem("coderhui-isFirstVisit", "false");
         }
 
         return {
@@ -57,7 +57,7 @@ export const useResumeStore = defineStore("resume", {
             ];
 
             this.currentId = allIds.length > 0 ? Math.max(...allIds) + 1 : 1;
-            localStorage.setItem("currentId", JSON.stringify(this.currentId));
+            localStorage.setItem("coderhui-currentId", JSON.stringify(this.currentId));
         },
 
         // todo 导出JSON数据
@@ -83,8 +83,8 @@ export const useResumeStore = defineStore("resume", {
          */
         saveToLocalStorage() {
             // $state 就是存储在 store 中的所有数据
-            localStorage.setItem("resumeData", JSON.stringify(this.$state));
-            localStorage.setItem("currentId", JSON.stringify(this.currentId));
+            localStorage.setItem("coderhui-resumeData", JSON.stringify(this.$state));
+            localStorage.setItem("coderhui-currentId", JSON.stringify(this.currentId));
         },
 
         /**

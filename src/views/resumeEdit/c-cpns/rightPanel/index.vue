@@ -1,9 +1,15 @@
 <template>
     <div class="right-panel">
         <a-card title="简历预览" :bodyStyle="{ height: 'calc(100vh - 185px)', overflow: 'auto' }">
-            <!-- <template #extra>
-                <a-button type="text" :icon="h(ExportOutlined)" @click="exportToPDF">导出JSON</a-button>
-            </template> -->
+            <template #extra>
+                <div class="github-link">
+                    <a href="https://github.com/Gent1eman/vue-resume" target="_blank">
+                        <span class="github-star">如果您喜欢这个项目，请给个 Star 吧！</span>
+                        <img src="https://img.shields.io/github/stars/Gent1eman/vue-resume?style=social" alt="GitHub stars" />
+                    </a>
+                </div>
+            </template>
+
             <div class="preview-wrapper">
                 <Preview ref="previewRef" />
             </div>

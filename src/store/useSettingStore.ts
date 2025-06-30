@@ -24,7 +24,7 @@ export const useSettingStore = defineStore("setting", () => {
 
     // 从loaclStorage初始化（合并默认值）
     const loadSetting = () => {
-        const saved = localStorage.getItem("resumeSettings");
+        const saved = localStorage.getItem("coderhui-resumeSettings");
         return saved ? JSON.parse(saved) : defaults;
     };
 
@@ -35,7 +35,7 @@ export const useSettingStore = defineStore("setting", () => {
     watch(
         () => settings.value,
         newVal => {
-            localStorage.setItem("resumeSettings", JSON.stringify(newVal));
+            localStorage.setItem("coderhui-resumeSettings", JSON.stringify(newVal));
         },
         { deep: true }
     );
