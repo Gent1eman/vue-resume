@@ -26,7 +26,7 @@
                 </div>
                 <div class="info-row">
                     <strong>
-                        <span>求职意向：</span>
+                        <span v-show="basicInfo.applicationPosition">求职意向：</span>
                         <span>{{ basicInfo.applicationPosition }}</span>
                     </strong>
                 </div>

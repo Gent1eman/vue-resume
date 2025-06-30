@@ -31,9 +31,6 @@ const exportToPDF = async () => {
     const content = previewRef.value?.resumeContentRef;
     if (!content) return;
 
-    // 添加临时样式
-    content.classList.add("print-mode");
-
     const canvas = await html2canvas(content, {
         scale: 3,
         useCORS: true,
@@ -46,9 +43,6 @@ const exportToPDF = async () => {
         scrollX: 0,
         scrollY: 0
     });
-
-    // 移除样式
-    content.classList.remove("print-mode");
 
     const pdf = new jsPDF("p", "pt", "a4");
     const margin = 13 * 2.83465;
@@ -135,12 +129,6 @@ const exportToPDF = async () => {
 </script>
 
 <style scoped lang="scss">
-/* 仅在导出期间生效 */
-.print-mode {
-    overflow: hidden !important;
-    scrollbar-width: none !important; /* Firefox */
-}
-
 .right-panel {
     /* 修改功能栏的布局 */
     .custom-actions {

@@ -5,7 +5,17 @@
     </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { onMounted } from "vue";
+import { useResumeStore } from "./store";
+
+// 页面加载时初始化
+onMounted(async () => {
+    const resumeStore = useResumeStore();
+    // 初始化数据
+    await resumeStore.initCheck();
+});
+</script>
 
 <style scoped>
 .app {

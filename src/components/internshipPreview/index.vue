@@ -33,10 +33,14 @@ import { marked } from "marked";
 import DOMPurify from "dompurify";
 import { computed } from "vue";
 const resumeStore = useResumeStore();
-
+marked.use({ async: false });
 const datas = computed(() => resumeStore.internships);
 
-const renderMarkdown = (text: string) => DOMPurify.sanitize(marked.parse(text) as string);
+// const renderMarkdown = (text: string) => DOMPurify.sanitize(marked.parse(text) as string);
+const renderMarkdown = (text: string | null | undefined) => {
+    if (!text) return ""; // 处理 null/undefined
+    return DOMPurify.sanitize(marked.parse(text) as string);
+};
 </script>
 
 <style scoped lang="scss">

@@ -28,7 +28,7 @@ const props = withDefaults(
     defineProps<{
         isDisplayTitle?: boolean;
         editorDefaultContent?: { [key: string]: string };
-        content?: string;
+        content: string;
     }>(),
     {
         isDisplayTitle: true, // 默认值为 true

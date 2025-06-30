@@ -38,8 +38,13 @@ import { computed } from "vue";
 const resumeStore = useResumeStore();
 // const datas = resumeStore.education;
 const datas = computed(() => resumeStore.education);
-
-const renderMarkdown = (text: string) => DOMPurify.sanitize(marked.parse(text) as string);
+marked.use({ async: false });
+// const renderMarkdown = (text: string) => DOMPurify.sanitize(marked.parse(text) as string);
+// 安全渲染 Markdown
+const renderMarkdown = (text: string | null | undefined) => {
+    if (!text) return ""; // 处理 null/undefined
+    return DOMPurify.sanitize(marked.parse(text) as string);
+};
 </script>
 
 <style scoped lang="scss">
