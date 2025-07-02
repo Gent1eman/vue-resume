@@ -7,7 +7,7 @@
             <a-form layout="vertical" v-model:value="localProject">
                 <a-row :gutter="[24, 64]">
                     <a-col :span="12">
-                        <a-form-item label="项目名称" required>
+                        <a-form-item label="项目名称" >
                             <a-input placeholder="例如：企业官网重构" v-model:value="localProject.projectName">
                                 <!-- 插槽 -->
                                 <template #prefix>
@@ -17,7 +17,7 @@
                         </a-form-item>
                     </a-col>
                     <a-col :span="12">
-                        <a-form-item label="担任角色" required>
+                        <a-form-item label="担任角色" >
                             <a-input placeholder="例如：前端开发工程师" v-model:value="localProject.role">
                                 <!-- 插槽 -->
                                 <template #prefix>
@@ -29,7 +29,7 @@
                 </a-row>
                 <a-row :gutter="[24, 64]">
                     <a-col :span="24">
-                        <a-form-item label="项目时间" required>
+                        <a-form-item label="项目时间" >
                             <a-config-provider :locale="zhCN">
                                 <a-range-picker
                                     style="width: 100%"
@@ -46,7 +46,7 @@
 
                 <a-row :gutter="[24, 64]">
                     <a-col :span="24">
-                        <a-form-item label="项目描述" required>
+                        <a-form-item label="项目描述" >
                             <markdown-editor
                                 :isDisplayTitle="false"
                                 style="margin-top: 0px"

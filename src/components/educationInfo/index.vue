@@ -7,7 +7,7 @@
             <a-form layout="vertical" v-model:value="localEducation">
                 <a-row :gutter="[24, 64]">
                     <a-col :span="12">
-                        <a-form-item label="学校名称" required>
+                        <a-form-item label="学校名称">
                             <a-input placeholder="例如：北京大学" v-model:value="localEducation.school">
                                 <!-- 插槽 -->
                                 <template #prefix>
@@ -17,7 +17,7 @@
                         </a-form-item>
                     </a-col>
                     <a-col :span="12">
-                        <a-form-item label="专业" required>
+                        <a-form-item label="专业">
                             <a-input placeholder="例如：计算机科学与技术" v-model:value="localEducation.major">
                                 <!-- 插槽 -->
                                 <template #prefix>
@@ -29,7 +29,7 @@
                 </a-row>
                 <a-row :gutter="[24, 64]">
                     <a-col :span="12">
-                        <a-form-item label="学位" required>
+                        <a-form-item label="学位">
                             <a-select placeholder="请选择学位" v-model:value="localEducation.degree" :options="degreeOptions"> </a-select>
                         </a-form-item>
                     </a-col>
@@ -46,7 +46,7 @@
                 </a-row>
                 <a-row :gutter="[24, 64]">
                     <a-col :span="24">
-                        <a-form-item label="在校时间" required>
+                        <a-form-item label="在校时间">
                             <a-config-provider :locale="zhCN">
                                 <a-range-picker
                                     style="width: 100%"
@@ -63,7 +63,7 @@
 
                 <a-row :gutter="[24, 64]">
                     <a-col :span="24">
-                        <a-form-item label="补充信息" required>
+                        <a-form-item label="补充信息">
                             <markdown-editor
                                 :isDisplayTitle="false"
                                 style="margin-top: 0px"

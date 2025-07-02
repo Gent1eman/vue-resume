@@ -7,7 +7,7 @@
             <a-form layout="vertical" v-model:value="localWork">
                 <a-row :gutter="[24, 64]">
                     <a-col :span="12">
-                        <a-form-item label="公司名称" required>
+                        <a-form-item label="公司名称">
                             <a-input placeholder="例如：阿里巴巴" v-model:value="localWork.company">
                                 <!-- 插槽 -->
                                 <template #prefix>
@@ -17,7 +17,7 @@
                         </a-form-item>
                     </a-col>
                     <a-col :span="12">
-                        <a-form-item label="职位" required>
+                        <a-form-item label="职位">
                             <a-input placeholder="例如：前端开发工程师" v-model:value="localWork.position">
                                 <!-- 插槽 -->
                                 <template #prefix>
@@ -29,7 +29,7 @@
                 </a-row>
                 <a-row :gutter="[24, 64]">
                     <a-col :span="12">
-                        <a-form-item label="部门" required>
+                        <a-form-item label="部门">
                             <a-input placeholder="例如：技术部" v-model:value="localWork.department">
                                 <!-- 插槽 -->
                                 <template #prefix>
@@ -51,7 +51,7 @@
                 </a-row>
                 <a-row :gutter="[24, 64]">
                     <a-col :span="12">
-                        <a-form-item label="工作类型" required>
+                        <a-form-item label="工作类型">
                             <a-select placeholder="请选择" v-model:value="localWork.workType" :options="workTypeOptions" />
                         </a-form-item>
                     </a-col>
@@ -72,7 +72,7 @@
                 </a-row>
                 <a-row :gutter="[24, 64]">
                     <a-col :span="24">
-                        <a-form-item label="工作内容" required>
+                        <a-form-item label="工作内容">
                             <markdown-editor
                                 :isDisplayTitle="false"
                                 :editorDefaultContent

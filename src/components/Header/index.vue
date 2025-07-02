@@ -37,7 +37,7 @@ const items = ref<MenuProps["items"]>([
     {
         key: "aiDeep",
         icon: () => h(MessageOutlined),
-        label: "AI深度交流",
+        label: "AI深度优化",
         onClick: () => router.push("/resume/aiDeep")
     },
     {

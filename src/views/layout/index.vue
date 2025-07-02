@@ -19,6 +19,7 @@ import Header from "@/components/Header/index.vue";
     height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: #f9fafb;
 
     > div:first-child {
         /* Header 容器 */

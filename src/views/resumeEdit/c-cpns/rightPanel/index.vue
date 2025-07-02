@@ -151,5 +151,14 @@ const exportToPDF = async () => {
         background-color: #ffffff;
         box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     }
+
+    :deep(.ant-card-body::-webkit-scrollbar) {
+        width: 3px;
+    }
+
+    :deep(.ant-card-body::-webkit-scrollbar-thumb) {
+        background: #b8b8b8; /* Vue 主题色示例 */
+        border-radius: 3px;
+    }
 }
 </style>

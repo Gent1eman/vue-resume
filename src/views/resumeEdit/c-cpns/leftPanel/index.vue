@@ -153,10 +153,10 @@ import type { Component } from "vue";
 import { useResumeStore, useSettingStore } from "@/store";
 import { message } from "ant-design-vue";
 import { VueDraggable } from "vue-draggable-plus";
-import { moduleArray } from "@/utils/module-sort";
+
 import ModuleCard from "@/components/moduleCard/index.vue";
+
 const open = ref<boolean>(false);
-const moduleList = ref(moduleArray);
 const resumeStore = useResumeStore();
 const settingStore = useSettingStore();
 
@@ -235,6 +235,15 @@ const handleAutoFill = async () => {
     /* 修改tab的文字大小 */
     :deep(.ant-tabs-tab) {
         font-size: 14px !important;
+    }
+
+    :deep(.ant-card-body::-webkit-scrollbar) {
+        width: 3px;
+    }
+
+    :deep(.ant-card-body::-webkit-scrollbar-thumb) {
+        background: #b8b8b8; /* Vue 主题色示例 */
+        border-radius: 3px;
     }
 }
 

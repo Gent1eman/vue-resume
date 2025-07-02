@@ -7,7 +7,7 @@
             <a-form layout="vertical" v-model:value="localInternship">
                 <a-row :gutter="[24, 64]">
                     <a-col :span="12">
-                        <a-form-item label="公司名称" required>
+                        <a-form-item label="公司名称" >
                             <a-input placeholder="例如：腾讯科技有限公司" v-model:value="localInternship.company">
                                 <!-- 插槽 -->
                                 <template #prefix>
@@ -17,7 +17,7 @@
                         </a-form-item>
                     </a-col>
                     <a-col :span="12">
-                        <a-form-item label="职位" required>
+                        <a-form-item label="职位" >
                             <a-input placeholder="例如：前端开发实习生" v-model:value="localInternship.position">
                                 <!-- 插槽 -->
                                 <template #prefix>
@@ -29,7 +29,7 @@
                 </a-row>
                 <a-row :gutter="[24, 64]">
                     <a-col :span="12">
-                        <a-form-item label="工作地点" required>
+                        <a-form-item label="工作地点" >
                             <a-input placeholder="例如：北京" v-model:value="localInternship.place">
                                 <!-- 插槽 -->
                                 <template #prefix>
@@ -56,7 +56,7 @@
 
                 <a-row :gutter="[24, 64]">
                     <a-col :span="24">
-                        <a-form-item label="实习内容" required>
+                        <a-form-item label="实习内容" >
                             <markdown-editor
                                 :isDisplayTitle="false"
                                 :editorDefaultContent

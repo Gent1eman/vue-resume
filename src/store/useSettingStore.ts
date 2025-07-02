@@ -19,7 +19,12 @@ export const useSettingStore = defineStore("setting", () => {
             campus: true, // 校园经历
             certificates: true // 证书信息
         },
-        modulesSort: moduleArray
+        modulesSort: moduleArray,
+        llmConfig: {
+            apiKey: "",
+            apiUrl: import.meta.env.VITE_API_URL,
+            modelName: "qwen-turbo"
+        }
     };
 
     // 从loaclStorage初始化（合并默认值）

@@ -41,7 +41,7 @@
                     </a-row>
                     <a-row :gutter="[24, 64]">
                         <a-col :span="12">
-                            <a-form-item label="姓名" required>
+                            <a-form-item label="姓名">
                                 <a-input placeholder="请输入您的姓名" v-model:value="basicInfo.name">
                                     <!-- 插槽 -->
                                     <template #prefix>
@@ -51,7 +51,7 @@
                             </a-form-item>
                         </a-col>
                         <a-col :span="12">
-                            <a-form-item label="电话" required>
+                            <a-form-item label="电话">
                                 <a-input placeholder="请输入您的电话号码" v-model:value="basicInfo.phone">
                                     <!-- 插槽 -->
                                     <template #prefix>
@@ -63,7 +63,7 @@
                     </a-row>
                     <a-row :gutter="[24, 64]">
                         <a-col :span="12">
-                            <a-form-item label="邮箱" required>
+                            <a-form-item label="邮箱">
                                 <a-input placeholder="请输入您的邮箱" v-model:value="basicInfo.email">
                                     <!-- 插槽 -->
                                     <template #prefix>

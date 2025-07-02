@@ -27,7 +27,7 @@ const routes: Array<RouteRecordRaw> = [
                 path: "/resume/aiDeep",
                 name: "aiDeep",
                 component: () => import("@/views/aiDeep/index.vue"),
-                meta: { title: "简历工坊 - AI深度交流" }
+                meta: { title: "简历工坊 - AI深度优化" }
             },
             {
                 path: "/resume/setting",
