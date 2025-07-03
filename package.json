@@ -10,7 +10,8 @@
         "build-only": "vite build",
         "type-check": "vue-tsc --build",
         "lint": "eslint \"src/**/*.+(js|ts|vue)\" ",
-        "format": "prettier --write src/"
+        "format": "prettier --write src/",
+        "analyze": "source-map-explorer 'dist/assets/*.js'"
     },
     "dependencies": {
         "@ant-design/icons-vue": "^7.0.1",
@@ -50,6 +51,7 @@
         "npm-run-all2": "^7.0.2",
         "prettier": "3.5.3",
         "sass-embedded": "^1.89.2",
+        "source-map-explorer": "^2.5.3",
         "typescript": "~5.8.0",
         "vite": "^6.2.4",
         "vite-plugin-vue-devtools": "^7.7.2",

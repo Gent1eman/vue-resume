@@ -72,6 +72,13 @@ const renderMarkdown = (text: string | null | undefined) => {
         }
     }
 
+    .preview-content {
+        margin-bottom: 10px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
     :deep(.internship-description) {
         ul {
             margin-left: 20px;

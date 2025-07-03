@@ -69,6 +69,13 @@ const renderMarkdown = (text: string | null | undefined) => {
         }
     }
 
+    .preview-content {
+        margin-bottom: 10px;
+        &:last-child {
+            margin-bottom: 0; // 最后一个元素取消margin-bottom
+        }
+    }
+
     :deep(.project-description) {
         ul {
             margin-left: 20px;
