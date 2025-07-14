@@ -34,7 +34,7 @@
         </section>
         <!-- 个人头像 -->
         <div class="avator">
-            <a-image v-if="basicInfo.avatar" :src="basicInfo.avatar" style="width: 120px; height: 168px" />
+            <a-image v-if="basicInfo.avatar" :src="basicInfo.avatar" style="width: 105px; height: 147px" />
         </div>
 
         <!-- 专业技能（通用预览） -->
